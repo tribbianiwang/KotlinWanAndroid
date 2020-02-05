@@ -11,7 +11,9 @@ class VpMainAdapter : FragmentPagerAdapter {
     lateinit var  fragmentList:ArrayList<Fragment>
 
 
-    constructor(supportFragmentManager: FragmentManager?, fragmentList: ArrayList<Fragment>) : super(supportFragmentManager){
+    constructor(supportFragmentManager: FragmentManager?, fragmentList: ArrayList<Fragment>) : super(
+        supportFragmentManager!!
+    ){
             this.fragmentList = fragmentList;
     }
 
