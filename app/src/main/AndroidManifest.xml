@@ -4,6 +4,7 @@
     package="com.wl.wanandroid">
 
     <dist:module dist:instant="true" />
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <application
         android:allowBackup="true"

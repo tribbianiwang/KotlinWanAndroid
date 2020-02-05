@@ -1,6 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+
+
+    <color name="theme_red">#A82127</color>
+    <color name="theme_reds">#A82127</color>
+    <color name="hongbao_shiyong">#898989</color>
+    <color name="tab_gray">#CFC9CE</color>
+    <color name="tab_pink">#CF415E</color>
+    <color name="con_gray">#919191</color>
+    <color name="txt_blue">#FF007CB0</color>
+    <color name="txt_gray">#FF575756</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="graytextcolor">#282828</color>
+    <color name="txt_orange">#FFEB6100</color>
+    <color name="bg_gray">#FFE3E3E7</color>
+    <color name="background">#f2f2f2</color>
+    <color name="orange">#FFE84E0E</color>
+    <color name="discount_orange">#FCA343</color>
+    <color name="transparent">#00000000</color>
+    <color name="bg">#FFF39200</color>
+    <color name="lightblue">#FF007AA2</color>
+    <color name="lightorange">#FFACBA00</color>
+    <color name="red">#FFFF0000</color>
+    <color name="reds">#e60012</color>
+    <color name="transparentdarkgray">#CC292929</color>
+    <color name="transparentgray">#CC666666</color>
+    <color name="yellow">#ff9933</color>
+    <color name="gray">#969696</color>
+    <color name="grays">#EFEFEF</color>
+    <color name="loading_gray">#44000000</color>
+    <color name="alpha_gray">#f9f9f9</color>
+    <color name="buttongrays">#f5f5f5</color>
+    <color name="light_blue">#5CACEE</color>
+    <color name="light_gray">#87CEEB</color>
+    <color name="orange_red">#FFA07A</color>
+    <color name="whiteGray">#ffC9CACB</color>
+    <color name="nomalGray">#838B83</color>
+    <color name="blue">#436EEE</color>
+    <color name="light_orange">#FFFCBA00</color>
+    <color name="coffee">#622f1b</color>
+    <color name="black2">#80000000</color>
+    <color name="click_color">#2b72d6</color>
+    <color name="buttom_top">#1e1e1e</color>
+    <color name="buttom_centre">#303030</color>
+    <color name="buttom_buttom">#000000</color>
+    <color name="radio_bt">#71ec13</color>
+    <color name="province_line_border">#C7C7C7</color>
+    <color name="registered_new_sex_no">#B7B7B7</color>
+    <color name="registered_new_sex_select">#00A9F0</color>
+
+    <drawable name="dkgray">#80808FF0</drawable>
+    <drawable name="yello">#F8F8FF00</drawable>
+    <drawable name="white">#FFFFFF</drawable>
+    <drawable name="darkgray">#938192</drawable>
+    <drawable name="lightgreen">#7cd12e</drawable>
+    <drawable name="black">#ff000000</drawable>
+    <drawable name="blue">#ff0000ff</drawable>
+    <drawable name="cyan">#ff00ffff</drawable>
+
+    <color name="gainsboro">#C0C0C0</color>
+    <color name="forget_textcolor">#6D6D6D</color>
+    <color name="juhong">#FF4500</color>
+    <color name="phone_bg">#f6f6f6</color>
+    <!-- 淡灰色 -->
+    <drawable name="green">#ff00ff00</drawable>
+    <drawable name="ltgray">#ffcccccc</drawable>
+    <drawable name="magenta">#ffff00ff</drawable>
+    <drawable name="red">@color/theme_red</drawable>
+    <drawable name="transparent">#00000000</drawable>
+    <drawable name="yellow">#1E90FF</drawable>
+    <drawable name="qianbai">#E6E6FA</drawable>
+
+    <item name="main_background" type="drawable">#FFE7E7E7</item>
+    <item name="newslist_item_background" type="drawable">#FFE7E7E7</item>
+    <item name="category_title_normal_background" type="color">#FFADB2AD</item>
+
+    <color name="preord_gategory">#DDDDDD</color>
+    <!-- 土黄色 -->
+    <color name="sandybrown">#f5deb3</color>
+    <!-- 自助买单金额灰色 -->
+    <color name="gray_zizhu">#666666</color>
+    <!-- 浅红 -->
+    <color name="Red">#fd3b35</color>
+    <color name="Fleshcolor">#FFFACD</color>
+    <color name="Greyred">#EEB4B4</color>
+    <color name="DarkGray">#898989</color>
+    <color name="PopupGray">#dcdcdc</color>
+    <color name="PopupTextGray">#eeeeee</color>
+    <color name="SmallGray">#eeeeee</color>
+    <color name="SmallGrayss">#e5e5e5</color>
+    <color name="Orange_red">#ff4700</color>
+    <color name="small_yellow">#FFEC8B</color>
+    <color name="order_adaper_xuanzhong">#fee2cc</color>
+    <color name="index_gray">#575757</color>
+    <color name="progress_bg">#66CDAA</color>
+    <!-- 升级apk dialog字体颜色 -->
+    <color name="blues">#7bb5ff</color>
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="order_yuan_count">#ff3f00</color>
+    <color name="shop_add_car">#fe9402</color>
+    <color name="touming">#00000000</color>
+    <color name="lightgray">#8e8e8e</color>
+    <color name="blackgray">#282828</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#2B2B2B</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="design_main_black">#2d3036</color>
+    <color name="design_main_orange">#FF7D32</color>
+    <color name="design_main_blue">#02a0e9</color>
+    <color name="design_text_alpha_gray">#9d9d9d</color>
+    <color name="design_text_black">#0c0c0c</color>
+    <color name="design_text_gray">#636362</color>
+    <color name="design_bg_gray">#e8e8e8</color>
+    <color name="design_bg_blue">#8ebaed</color>
+    <color name="color_loading_status">#FFCCCCCC</color>
+    <color name="gray_white">#F2F2F2</color>
+    <color name="alpha_gray_white">#F5F7FC</color>
 </resources>
