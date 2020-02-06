@@ -4,20 +4,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatViewInflater
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.tmall.ultraviewpager.UltraViewPager
 import com.wl.wanandroid.R
+import com.wl.wanandroid.adapter.PagerHomeBannerAdapter
 import com.wl.wanandroid.bean.BannerBean
-import com.wl.wanandroid.utils.LogUtils
+import com.wl.wanandroid.bean.Data
+import com.wl.wanandroid.utils.AppConstants.HOME_BANNER_LOOP_TIME
 import com.wl.wanandroid.viewmodel.BannerViewModel
-import com.youth.banner.Banner
+import kotlinx.android.synthetic.main.layout_fragment_home.*
+
 
 class HomeFragment : BaseFragment() {
 
     lateinit var bannerViewModel : BannerViewModel
+    var bannerDatas:List<Data>?=null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,10 +37,17 @@ class HomeFragment : BaseFragment() {
         lifecycle.addObserver(bannerViewModel)
 
         var bannerBeanObserver = Observer<BannerBean>{
+            ulBanner?.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL)
+            if (it.data.size > 1) {
+                ulBanner?.setInfiniteLoop(true)
+                ulBanner.setAutoScroll(HOME_BANNER_LOOP_TIME)
+            } else {
+                ulBanner.setInfiniteLoop(false)
+            }
 
-         for(banner in it.data){
-             LogUtils.d("homefragment",banner.title)
-         }
+            ulBanner?.adapter = PagerHomeBannerAdapter(it.data)
+
+
         }
 
 

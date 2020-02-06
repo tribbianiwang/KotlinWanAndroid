@@ -17,6 +17,6 @@ object AppConstants {
 
     val TIMEOUT: Long = 10000
     val TOAST_DOUBLE_TIME_LIMIT = 300
-
+    const val HOME_BANNER_LOOP_TIME = 4000
     val HIDE_LOADING_STATUS_MSG = "hide_loading_status_msg"
 }
