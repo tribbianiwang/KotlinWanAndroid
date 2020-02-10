@@ -39,6 +39,8 @@ class HomeFragment : BaseFragment() {
 
 
         rv_publicnumber.layoutManager = GridLayoutManager(context,2,GridLayoutManager.HORIZONTAL,false)
+        hIndicator.bindRecyclerView(rv_publicnumber)
+
 
         bannerViewModel = ViewModelProviders.of(this).get(BannerViewModel::class.java)
         publicNumberListModel = ViewModelProviders.of(this).get(PublicNumberListViewModel::class.java)

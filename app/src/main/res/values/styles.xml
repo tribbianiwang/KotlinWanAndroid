@@ -24,4 +24,22 @@
         <item name="android:windowAnimationStyle">@null</item>
     </style>
 
+    <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!--Appbar背景色-->
+        <!--<item name="colorPrimary">@color/background</item>-->
+        <!--状态栏颜色-->
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <item name="colorPrimaryDark">@color/theme_red</item>
+        <!--&lt;!&ndash;控制各个控件被选中时的颜色&ndash;&gt;-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+        <!--&lt;!&ndash; 避免控件会顶到状态栏上 &ndash;&gt;-->
+        <item name="android:windowContentTransitions">true</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+        <!--<item name="android:fitsSystemWindows">true</item>-->
+        <!--&lt;!&ndash;为true 状态栏浅色字体自动深色只在6.0以上有效果&ndash;&gt;-->
+
+    </style>
+
+
 </resources>

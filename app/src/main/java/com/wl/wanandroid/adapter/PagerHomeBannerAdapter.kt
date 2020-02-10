@@ -1,21 +1,20 @@
 package com.wl.wanandroid.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import com.wl.wanandroid.R
-import com.wl.wanandroid.bean.Data
+import com.wl.wanandroid.bean.BannerBeanData
 import com.wl.wanandroid.utils.ImageViewUtils
 import kotlinx.android.synthetic.main.item_layout_home_banner.view.*
 
 
-class PagerHomeBannerAdapter(mInformationList: List<Data>) : PagerAdapter(){
+class PagerHomeBannerAdapter(mInformationList: List<BannerBeanData>) : PagerAdapter(){
 
-    var mInfoList:ArrayList<Data>?= ArrayList()
+    var mInfoList:ArrayList<BannerBeanData>?= ArrayList()
     init {
-        mInfoList = mInformationList as ArrayList<Data>
+        mInfoList = mInformationList as ArrayList<BannerBeanData>
     }
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
@@ -43,7 +42,7 @@ class PagerHomeBannerAdapter(mInformationList: List<Data>) : PagerAdapter(){
     }
     private fun dosomething(context: Context, item: Any) {
         // ListView 监听动作
-        val al = item as Data
+        val al = item as BannerBeanData
 //        if ("Y" == al.IsWeb) {
 //            context.startActivity(getListIntent(context,al, ActivityDisplayForWeb::class.java))
 //        } else {

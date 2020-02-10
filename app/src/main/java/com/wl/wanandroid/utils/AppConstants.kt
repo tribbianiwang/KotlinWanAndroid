@@ -3,7 +3,13 @@ object AppConstants {
 
     val BASEROOTURL = "https://www.wanandroid.com/"
 
-    const val BANNER_URL = "banner/json"
+    const val BANNER_URL = "banner/json"//首页轮播图
+    const val PUBLIC_NUMBER_LIST_URL = "wxarticle/chapters/json"//获取公众号列表
+
+
+
+
+
     const val QUERYSTATUSLOADING="QUERYSTATUSLOADING"
     const val QUERYSTATUSFAILED= "QUERYSTATUSFAILED"
     const val QUERYSTATUSSUCCESS="QUERYSTATUSSUCCESS"

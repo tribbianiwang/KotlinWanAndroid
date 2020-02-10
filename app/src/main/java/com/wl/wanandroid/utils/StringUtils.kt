@@ -3,6 +3,7 @@ package com.wl.wanandroid.utils
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.text.Html
 import android.view.inputmethod.InputMethodManager
@@ -12,8 +13,7 @@ import com.wl.wanandroid.MyApplication
 
 
 import java.util.regex.PatternSyntaxException
-
-
+import kotlin.random.Random
 
 
 object StringUtils {
@@ -139,6 +139,23 @@ object StringUtils {
         }catch (exception:Exception){
         }
         return intResult
+    }
+
+    fun getRandomColor():Int{
+        val random = Random
+        var r = 0
+        var g = 0
+        var b = 0
+        for (i in 0..1) {
+            //       result=result*10+random.nextInt(10);
+            var temp = random.nextInt(16)
+            r = r * 16 + temp
+            temp = random.nextInt(16)
+            g = g * 16 + temp
+            temp = random.nextInt(16)
+            b = b * 16 + temp
+        }
+        return Color.rgb(r, g, b)
     }
 
 

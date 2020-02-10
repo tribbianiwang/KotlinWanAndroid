@@ -1,12 +1,12 @@
 package com.wl.wanandroid.bean
 
 data class BannerBean(
-    val `data`: List<Data>,
+    val `data`: List<BannerBeanData>,
     val errorCode: Int,
     val errorMsg: String
 )
 
-data class Data(
+data class BannerBeanData(
     val desc: String,
     val id: Int,
     val imagePath: String,
