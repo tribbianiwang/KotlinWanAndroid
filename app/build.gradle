@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
-
+def paging_version = "2.1.0"
 apply plugin: 'kotlin-android-extensions'
 
 android {
@@ -59,4 +59,9 @@ dependencies {
     implementation('com.alibaba.android:ultraviewpager:1.0.7.7@aar') {
         transitive = true
     }
+
+    //Paging的依赖
+    implementation "android.arch.paging:runtime:$paging_version"
+    //Paging对RxJava2的原生支持
+    implementation "android.arch.paging:rxjava2:1.0.0-rc1"
 }

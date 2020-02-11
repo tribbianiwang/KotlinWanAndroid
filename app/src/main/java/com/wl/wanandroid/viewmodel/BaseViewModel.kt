@@ -14,9 +14,12 @@ open class BaseViewModel<T> : ViewModel(), LifecycleObserver, BaseDataResultList
     var baseModel: BaseModel<T>?=null
 
     override fun setQueryStatus(string: String) {
-        queryStatusLiveData.value = string
+        queryStatusLiveData.postValue(string)
+
 
     }
+
+
 
     override fun setErrorMsg(errorMsg: String) {
         errorMsgLiveData.value = errorMsg
@@ -24,7 +27,11 @@ open class BaseViewModel<T> : ViewModel(), LifecycleObserver, BaseDataResultList
 
     override fun setResultData(resultData: T) {
         baseResultLiveData.value = resultData
+
     }
+
+
+
 
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)

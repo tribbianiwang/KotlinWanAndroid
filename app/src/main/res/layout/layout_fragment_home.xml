@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <com.tmall.ultraviewpager.UltraViewPager
+        android:visibility="gone"
         android:id="@+id/ulBanner"
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -13,17 +14,25 @@
         android:background="@color/gray_white" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
         android:id="@+id/rv_publicnumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
 
 
     <com.yunlei.hindicator.widget.HIndicator
+        android:visibility="gone"
         android:layout_gravity="center"
         android:id="@+id/hIndicator"
         android:layout_width="50dp"
         android:layout_height="@dimen/app_margin_small"
         android:layout_marginTop="@dimen/app_margin_left"
         app:hi_indicatorColor="@color/theme_red"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rv_home_articles"
+        />
 
 </LinearLayout>

@@ -5,7 +5,7 @@ object AppConstants {
 
     const val BANNER_URL = "banner/json"//首页轮播图
     const val PUBLIC_NUMBER_LIST_URL = "wxarticle/chapters/json"//获取公众号列表
-
+    const val HOME_ARTICLE_URL = ""//首页文章列表bean
 
 
 
@@ -14,6 +14,7 @@ object AppConstants {
     const val QUERYSTATUSFAILED= "QUERYSTATUSFAILED"
     const val QUERYSTATUSSUCCESS="QUERYSTATUSSUCCESS"
     const val QUERYSTATUSEMPTY = "QUERYSTATUSEMPTY"
+    const val QUERYSTATUSNOMORE = "QUERYSTATUSNOMORE"
     val NO_PARAMS = "NO_PARAMS"
     const val ERRORCODESUCCESS = 0
 
