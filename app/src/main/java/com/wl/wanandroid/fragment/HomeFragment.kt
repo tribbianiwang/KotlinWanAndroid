@@ -138,10 +138,13 @@ class HomeFragment : BaseFragment() {
         homeArticleViewModel.errorMsgLiveData.observe(this,errorMsgObserver)
 
 
-        bannerViewModel.getBannerData()
+
 
         homeArticleViewModel.getArticleLiveData().observe(this,
-            Observer<PagedList<HomeArticleData>> { datasBeans -> homeArticlePagingAdapter.submitList(datasBeans) })
+            Observer<PagedList<HomeArticleData>> { datasBeans ->
+                homeArticlePagingAdapter.submitList(datasBeans)
+                bannerViewModel.getBannerData()
+            })
 
         homeArticleViewModel.getBoundaryPageData().observe(this,
             Observer<Boolean> { haData ->

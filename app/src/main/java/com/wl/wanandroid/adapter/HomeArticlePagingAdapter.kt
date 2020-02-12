@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tudaritest.util.OnRvItemClickListener
 import com.wl.wanandroid.bean.HomeArticleData
 import kotlinx.android.synthetic.main.layout_item_rv_home_article.view.*
+import com.wl.wanandroid.paging.AdapterDataObserverProxy
+
+
 
 class HomeArticlePagingAdapter() :
     PagedListAdapter<HomeArticleData, HomeArticlePagingAdapter.ViewHolder>(diffCallback) {
@@ -74,6 +77,11 @@ class HomeArticlePagingAdapter() :
     fun getRealPosition(holder: RecyclerView.ViewHolder): Int {
         val position = holder.layoutPosition
         return if (mHeaderView == null) position else position - 1
+    }
+
+    override fun registerAdapterDataObserver(observer: RecyclerView.AdapterDataObserver) {
+
+        super.registerAdapterDataObserver(AdapterDataObserverProxy(observer, 1))
     }
 
 }
