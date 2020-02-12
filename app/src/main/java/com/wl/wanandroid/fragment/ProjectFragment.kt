@@ -16,7 +16,7 @@ class ProjectFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        var contentView =inflater.inflate(R.layout.layout_fragment_home,container,false)
+        var contentView =inflater.inflate(R.layout.layout_fragment_project,container,false)
 
         return contentView
     }

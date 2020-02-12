@@ -16,6 +16,12 @@ import com.wl.wanandroid.fragment.ProjectFragment
 import com.wl.wanandroid.fragment.SystemFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.ArrayList
+import androidx.core.app.ComponentActivity
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import com.wl.wanandroid.utils.T
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        val fragments = ArrayList<Fragment>()
+        var fragments = ArrayList<Fragment>()
         fragments.add(HomeFragment())
         fragments.add(ProjectFragment())
         fragments.add(SystemFragment())
@@ -51,26 +57,8 @@ class MainActivity : AppCompatActivity() {
 
         tablayout_main.setSelectedTabIndicatorColor(Color.TRANSPARENT)
         vp_main.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tablayout_main))
+        tablayout_main.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(vp_main))
 
-        tablayout_main.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            lateinit var lastTab: TabLayout.Tab
-
-            override fun onTabSelected(tab: TabLayout.Tab) {
-
-
-
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab) {
-                lastTab = tab
-
-
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab) {
-
-            }
-        })
     }
 
 
