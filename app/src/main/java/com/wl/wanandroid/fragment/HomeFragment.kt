@@ -25,6 +25,9 @@ import kotlinx.android.synthetic.main.layout_fragment_home.*
 import androidx.paging.PagedList
 
 import com.wl.wanandroid.bean.HomeArticleData
+import kotlinx.android.synthetic.main.layout_home_rv_articles_header.view.*
+import android.widget.LinearLayout
+
 
 
 
@@ -35,6 +38,9 @@ class HomeFragment : BaseFragment() {
     lateinit var publicNumberListModel:PublicNumberListViewModel
     lateinit var homeArticleViewModel:HomeArticleViewModel
     lateinit  var homeArticlePagingAdapter: HomeArticlePagingAdapter
+
+    var bannerBean:BannerBean?=null
+    var publicNumberBean:PublicNumberListBean?=null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,8 +55,7 @@ class HomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        rv_publicnumber.layoutManager = GridLayoutManager(context,2,GridLayoutManager.HORIZONTAL,false)
-        hIndicator.bindRecyclerView(rv_publicnumber)
+
 
 
         rv_home_articles.layoutManager = LinearLayoutManager(context)
@@ -68,22 +73,43 @@ class HomeFragment : BaseFragment() {
         lifecycle.addObserver(homeArticleViewModel)
 
         var bannerBeanObserver = Observer<BannerBean>{
-            ulBanner?.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL)
-            if (it.data.size > 1) {
-                ulBanner?.setInfiniteLoop(true)
-                ulBanner.setAutoScroll(HOME_BANNER_LOOP_TIME)
-            } else {
-                ulBanner.setInfiniteLoop(false)
-            }
+            bannerBean = it
+            publicNumberListModel.getPublicNumberList()
 
-            ulBanner?.adapter = PagerHomeBannerAdapter(it.data)
 
 
         }
 
         var publicNumberObserver = Observer<PublicNumberListBean>{
+
+
+            val mainRvContentHeader = View.inflate(context,R.layout.layout_home_rv_articles_header, null)
+            val layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            mainRvContentHeader.layoutParams = layoutParams
+            homeArticlePagingAdapter.setHeaderView(mainRvContentHeader);
+
+            //设置公众号相关
+            publicNumberBean = it
+
+            mainRvContentHeader.rv_publicnumber.layoutManager = GridLayoutManager(context,2,GridLayoutManager.HORIZONTAL,false)
+            mainRvContentHeader.hIndicator.bindRecyclerView(mainRvContentHeader.rv_publicnumber)
             var rvHomePublicNumberAdapter = RvHomePublicNumberAdapter(it.data)
-            rv_publicnumber.adapter = rvHomePublicNumberAdapter
+            mainRvContentHeader.rv_publicnumber.adapter = rvHomePublicNumberAdapter
+
+            //设置banner相关
+            mainRvContentHeader.ulBanner?.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL)
+            if (it.data.size > 1) {
+                mainRvContentHeader.ulBanner?.setInfiniteLoop(true)
+                mainRvContentHeader.ulBanner.setAutoScroll(HOME_BANNER_LOOP_TIME)
+            } else {
+                mainRvContentHeader.ulBanner.setInfiniteLoop(false)
+            }
+
+            mainRvContentHeader.ulBanner?.adapter = bannerBean?.let { PagerHomeBannerAdapter(it.data) }
+
 
         }
 
@@ -105,8 +131,6 @@ class HomeFragment : BaseFragment() {
 
 
         bannerViewModel.getBannerData()
-        publicNumberListModel.getPublicNumberList()
-//        homeArticleViewModel.getHomeArticles("0",null,null)
 
         homeArticleViewModel.getArticleLiveData().observe(this,
             Observer<PagedList<HomeArticleData>> { datasBeans -> homeArticlePagingAdapter.submitList(datasBeans) })
@@ -114,8 +138,6 @@ class HomeFragment : BaseFragment() {
         homeArticleViewModel.getBoundaryPageData().observe(this,
             Observer<Boolean> { haData ->
                 if (!haData) {
-//                    refreshLayout.finishLoadMore()
-//                    refreshLayout.finishRefresh()
                 }
             })
 
