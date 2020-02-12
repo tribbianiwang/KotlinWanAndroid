@@ -28,7 +28,7 @@ class HomeArticlePagingAdapter() :
     val TYPE_NORMAL = 1
 
      var mHeaderView: View? = null
-     val mListener: OnRvItemClickListener? = null
+     var mListener: OnRvItemClickListener? = null
 
     fun setHeaderView(headerView: View) {
         mHeaderView = headerView
@@ -47,6 +47,10 @@ class HomeArticlePagingAdapter() :
         return ViewHolder(view)
     }
 
+    fun getItemBean(position:Int):HomeArticleData?{
+        return  getItem(position)
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if(getItemViewType(position) == TYPE_HEADER) return;
         var  pos = getRealPosition(holder);
@@ -55,7 +59,7 @@ class HomeArticlePagingAdapter() :
 
         if (holder is ViewHolder) {
             if (mListener == null) return
-            holder.itemView.setOnClickListener(View.OnClickListener { mListener.onItemClick(pos) })
+            holder.itemView.setOnClickListener(View.OnClickListener { mListener?.onItemClick(pos) })
         }
     }
 

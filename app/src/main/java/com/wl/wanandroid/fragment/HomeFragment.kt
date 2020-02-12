@@ -27,9 +27,8 @@ import androidx.paging.PagedList
 import com.wl.wanandroid.bean.HomeArticleData
 import kotlinx.android.synthetic.main.layout_home_rv_articles_header.view.*
 import android.widget.LinearLayout
-
-
-
+import com.tudaritest.util.OnRvItemClickListener
+import com.wl.wanandroid.utils.T
 
 
 class HomeFragment : BaseFragment() {
@@ -109,6 +108,15 @@ class HomeFragment : BaseFragment() {
             }
 
             mainRvContentHeader.ulBanner?.adapter = bannerBean?.let { PagerHomeBannerAdapter(it.data) }
+
+
+            homeArticlePagingAdapter.mListener = object:OnRvItemClickListener{
+                override fun onItemClick(position: Int) {
+
+                    LogUtils.d("homeFragment,","onClickTitle:${homeArticlePagingAdapter.getItemBean(position)?.title}")
+                }
+
+            }
 
 
         }
