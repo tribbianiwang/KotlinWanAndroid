@@ -11,6 +11,7 @@ class VpMainAdapter : FragmentPagerAdapter {
     lateinit var  fragmentList:ArrayList<Fragment>
 
 
+
     constructor(supportFragmentManager: FragmentManager?, fragmentList: ArrayList<Fragment>) : super(
         supportFragmentManager!!
     ){
@@ -18,6 +19,8 @@ class VpMainAdapter : FragmentPagerAdapter {
     }
 
     override fun getItem(position: Int): Fragment {
+
+
         return fragmentList.get(position)
     }
 

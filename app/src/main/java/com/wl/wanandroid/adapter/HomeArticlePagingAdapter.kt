@@ -58,7 +58,10 @@ class HomeArticlePagingAdapter() :
         if(getItemViewType(position) == TYPE_HEADER) return;
         var  pos = getRealPosition(holder);
         val bean = getItem(pos)
-        holder.itemView.tv_name.setText(bean?.title)
+        holder.itemView.tv_title.setText(bean?.title)
+        holder.itemView.tv_super_chapter_name.text = bean?.superChapterName
+        holder.itemView.tv_user_name.text = bean?.shareUser
+        holder.itemView.tv_time.text = bean?.niceShareDate
 
         if (holder is ViewHolder) {
             if (mListener == null) return
