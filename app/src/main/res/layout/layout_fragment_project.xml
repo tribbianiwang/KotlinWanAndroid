@@ -2,24 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:orientation="vertical">
 
     <com.google.android.material.tabs.TabLayout
-
-        xmlns:custom="http://schemas.android.com/tools"
-        custom:tabMode="fixed"
-        custom:tabGravity="fill"
-        custom:tabMaxWidth="0dp"
-        custom:tabIndicatorColor="@color/colorAccent"
-        custom:tabSelectedTextColor="@color/colorPrimary"
-        custom:tabTextColor="@color/colorPrimary"
-        custom:tabIndicatorFullWidth="false"
-        custom:tabBackground="@color/transparent"
-        custom:tabRippleColor="@color/transparent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/tablayout_system"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/theme_red" />
+        app:tabMode="scrollable"
+        >
+    </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_system"

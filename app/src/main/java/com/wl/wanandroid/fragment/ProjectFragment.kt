@@ -4,28 +4,31 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatViewInflater
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.wl.wanandroid.R
 import com.wl.wanandroid.adapter.SystemFragmentVpAdapter
 import com.wl.wanandroid.bean.SystemTreeBean
+import com.wl.wanandroid.bean.SystemTreeData
+import com.wl.wanandroid.utils.AppConstants
 import com.wl.wanandroid.utils.LogUtils
 import com.wl.wanandroid.viewmodel.SystemTreeViewModel
 import kotlinx.android.synthetic.main.layout_fragment_project.*
 
+
 class ProjectFragment : BaseFragment() {
-    
-    lateinit var systemTreeViewModel:SystemTreeViewModel
-    var systemFragmentVpAdapter:SystemFragmentVpAdapter?=null
+
+    lateinit var systemTreeViewModel: SystemTreeViewModel
+    var systemFragmentVpAdapter: SystemFragmentVpAdapter? = null
+    var fragmentList: ArrayList<SystemChildFragment> = ArrayList()
+    var titles: ArrayList<String> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var contentView =inflater.inflate(R.layout.layout_fragment_project,container,false)
+        var contentView = inflater.inflate(R.layout.layout_fragment_project, container, false)
         return contentView
     }
 
@@ -35,14 +38,33 @@ class ProjectFragment : BaseFragment() {
 
         lifecycle.addObserver(systemTreeViewModel)
 
-        var systemTreeObserver:Observer<SystemTreeBean> = object:Observer<SystemTreeBean>{
+        var systemTreeObserver: Observer<SystemTreeBean> = object : Observer<SystemTreeBean> {
             override fun onChanged(t: SystemTreeBean?) {
-                if(t?.data!=null&&t?.data.size>0){
+                if (t?.data != null && t?.data.size > 0) {
 
-                    systemFragmentVpAdapter = fragmentManager?.let { SystemFragmentVpAdapter(t.data, it) }
-                    tablayout_system.setupWithViewPager(vp_system)
+                        val smalldata: List<SystemTreeData> = t?.data.subList(0,5)
+
+
+                    for (single in t?.data.withIndex()) {
+                        var systemChildFragment = SystemChildFragment()
+                        var bundle = Bundle()
+                        bundle.putInt(AppConstants.TRANS_SYSTEM_CHILD_ID, single.value.id)
+                        bundle.putString(AppConstants.TRANS_SYSTEM_CHILD_NAME, single.value.name)
+                        systemChildFragment.arguments = bundle
+                        fragmentList.add(systemChildFragment)
+                        titles.add(single.value.name)
+                        tablayout_system.getTabAt(single.index)?.setText("fuck")
+                    }
+
+                    systemFragmentVpAdapter = childFragmentManager?.let { SystemFragmentVpAdapter(fragmentList,titles, it) }
+
                     vp_system.adapter = systemFragmentVpAdapter
+                    tablayout_system.setupWithViewPager(vp_system)
 
+//                    for (single in t?.data.withIndex()) {
+//
+//                        tablayout_system.getTabAt(single.index)?.setText("fuck")
+//                    }
 
                 }
 
@@ -51,11 +73,13 @@ class ProjectFragment : BaseFragment() {
 
         }
 
-        systemTreeViewModel.baseResultLiveData.observe(this,systemTreeObserver)
+        systemTreeViewModel.baseResultLiveData.observe(this, systemTreeObserver)
         systemTreeViewModel.errorMsgLiveData.observe(this, errorMsgObserver)
-        systemTreeViewModel.queryStatusLiveData.observe(this,queryStatusObserver)
+        systemTreeViewModel.queryStatusLiveData.observe(this, queryStatusObserver)
 
         systemTreeViewModel.getSystemTree()
 
     }
+
+
 }
