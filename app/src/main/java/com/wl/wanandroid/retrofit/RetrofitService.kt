@@ -1,9 +1,6 @@
 package com.wl.wanandroid.retrofit
 
-import com.wl.wanandroid.bean.BannerBean
-import com.wl.wanandroid.bean.HomeArticleBean
-import com.wl.wanandroid.bean.PublicNumberListBean
-import com.wl.wanandroid.bean.SystemTreeBean
+import com.wl.wanandroid.bean.*
 import com.wl.wanandroid.utils.AppConstants
 import com.wl.wanandroid.utils.AppConstants.SYSTEM_TREE_URL
 import retrofit2.http.*
@@ -22,6 +19,9 @@ interface  RetrofitService{
 
     @GET(SYSTEM_TREE_URL)
     fun getSystemTrees():Observable<SystemTreeBean> //获取项目类别
+
+    @GET("project/list/{page}/json")
+    fun getProjectArticles(@Path("page")page:String,@Query("cid")projectTreeId:String):Observable<ProjectArticleBean>
 
 
 

@@ -7,20 +7,19 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.wl.wanandroid.R
-import com.wl.wanandroid.adapter.SystemFragmentVpAdapter
+import com.wl.wanandroid.adapter.ProjectFragmentVpAdapter
 import com.wl.wanandroid.bean.SystemTreeBean
 import com.wl.wanandroid.bean.SystemTreeData
 import com.wl.wanandroid.utils.AppConstants
-import com.wl.wanandroid.utils.LogUtils
-import com.wl.wanandroid.viewmodel.SystemTreeViewModel
+import com.wl.wanandroid.viewmodel.ProjectTreeViewModel
 import kotlinx.android.synthetic.main.layout_fragment_project.*
 
 
 class ProjectFragment : BaseFragment() {
 
-    lateinit var systemTreeViewModel: SystemTreeViewModel
-    var systemFragmentVpAdapter: SystemFragmentVpAdapter? = null
-    var fragmentList: ArrayList<SystemChildFragment> = ArrayList()
+    lateinit var systemTreeViewModel: ProjectTreeViewModel
+    var systemFragmentVpAdapter: ProjectFragmentVpAdapter? = null
+    var fragmentList: ArrayList<ProjectChildFragment> = ArrayList()
     var titles: ArrayList<String> = ArrayList()
 
     override fun onCreateView(
@@ -34,7 +33,7 @@ class ProjectFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        systemTreeViewModel = ViewModelProviders.of(this).get(SystemTreeViewModel::class.java)
+        systemTreeViewModel = ViewModelProviders.of(this).get(ProjectTreeViewModel::class.java)
 
         lifecycle.addObserver(systemTreeViewModel)
 
@@ -46,18 +45,18 @@ class ProjectFragment : BaseFragment() {
 
 
                     for (single in t?.data.withIndex()) {
-                        var systemChildFragment = SystemChildFragment()
+                        var systemChildFragment = ProjectChildFragment()
                         var bundle = Bundle()
                         bundle.putInt(AppConstants.TRANS_SYSTEM_CHILD_ID, single.value.id)
                         bundle.putString(AppConstants.TRANS_SYSTEM_CHILD_NAME, single.value.name)
                         systemChildFragment.arguments = bundle
                         fragmentList.add(systemChildFragment)
                         titles.add(single.value.name)
-                        tablayout_system.getTabAt(single.index)?.setText("fuck")
                     }
 
-                    systemFragmentVpAdapter = childFragmentManager?.let { SystemFragmentVpAdapter(fragmentList,titles, it) }
+                    systemFragmentVpAdapter = childFragmentManager?.let { ProjectFragmentVpAdapter(fragmentList,titles, it) }
 
+                    vp_system.setOffscreenPageLimit(5);
                     vp_system.adapter = systemFragmentVpAdapter
                     tablayout_system.setupWithViewPager(vp_system)
 

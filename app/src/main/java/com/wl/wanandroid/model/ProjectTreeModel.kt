@@ -4,7 +4,7 @@ import com.wl.wanandroid.bean.SystemTreeBean
 import com.wl.wanandroid.utils.AppConstants
 import com.wl.wanandroid.utils.BaseDataResultListener
 
-class SyStemTreeModel(dataResultListener: BaseDataResultListener<SystemTreeBean>) :
+class ProjectTreeModel(dataResultListener: BaseDataResultListener<SystemTreeBean>) :
     BaseModel<SystemTreeBean>(dataResultListener) {
 
     fun getSystemTrees(){

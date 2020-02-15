@@ -107,7 +107,11 @@ open class BaseModel<T>(dataResultListener: BaseDataResultListener<T>){
                     return  selectMethod?.invoke(GetRetrofitService.retrofitService,commonParams[0]) as Observable<T>
                 }
             }
-            2-> return  selectMethod?.invoke(GetRetrofitService.retrofitService,commonParams[0],commonParams[1]) as Observable<T>
+
+            2->{
+                LogUtils.d("params,","params[0]${commonParams[0]},[1]${commonParams[1]}");
+                return  selectMethod?.invoke(GetRetrofitService.retrofitService,commonParams[0],commonParams[1]) as Observable<T>
+            }
            3-> return  selectMethod?.invoke(GetRetrofitService.retrofitService,commonParams[0],commonParams[1],commonParams[2]) as Observable<T>
            4-> return  selectMethod?.invoke(GetRetrofitService.retrofitService,commonParams[0],commonParams[1],commonParams[2],commonParams[3]) as Observable<T>
            5-> return  selectMethod?.invoke(GetRetrofitService.retrofitService,commonParams[0],commonParams[1],commonParams[2],commonParams[3],commonParams[4]) as Observable<T>

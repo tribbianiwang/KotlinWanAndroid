@@ -1,19 +1,14 @@
 package com.wl.wanandroid.adapter
 
-import android.os.Bundle
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.wl.wanandroid.bean.SystemTreeData
-import com.wl.wanandroid.fragment.SystemChildFragment
-import com.wl.wanandroid.utils.AppConstants.TRANS_SYSTEM_CHILD_ID
-import com.wl.wanandroid.utils.AppConstants.TRANS_SYSTEM_CHILD_NAME
-import com.wl.wanandroid.utils.LogUtils
+import com.wl.wanandroid.fragment.ProjectChildFragment
 
-class SystemFragmentVpAdapter(fragments: ArrayList<SystemChildFragment>,titles:ArrayList<String>,fm: FragmentManager) :
+class ProjectFragmentVpAdapter(fragments: ArrayList<ProjectChildFragment>, titles:ArrayList<String>, fm: FragmentManager) :
     FragmentPagerAdapter(fm) {
-   var fragments: ArrayList<SystemChildFragment>
+   var fragments: ArrayList<ProjectChildFragment>
    var titles:ArrayList<String>
     init {
         this.fragments = fragments
