@@ -10,7 +10,7 @@
         android:id="@+id/tv_system_child_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/small_text_size"
+        android:textSize="@dimen/small_middle_text_size"
         android:textColor="@color/design_text_black"
         />
 

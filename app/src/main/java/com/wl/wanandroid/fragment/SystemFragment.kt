@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.tudaritest.util.OnRvItemClickListener
 import com.wl.wanandroid.R
 import com.wl.wanandroid.adapter.RvSystemChildAdapter
 import com.wl.wanandroid.adapter.RvSystemTreeAdapter
@@ -47,11 +48,24 @@ class SystemFragment : BaseFragment() {
         var systemTreeObserver:Observer<SystemTreeBean> = Observer {
             LogUtils.d("systemTreeViewmodel","${it.data.size}")
             rvSystemTreeAdapter = RvSystemTreeAdapter(it.data)
+
             rv_system_tree.adapter = rvSystemTreeAdapter
+            rvSystemTreeAdapter?.selectedPosition = 0
+            rvSystemTreeAdapter?.notifyDataSetChanged()
             if(it.data!=null&&it.data.size>0){
-                systemChildenData = it.data.get(0).children as ArrayList<SystemChildData>
+                systemChildenData.addAll(it.data.get(0).children as ArrayList<SystemChildData>)
                 rvSystemChildrenAdapter = RvSystemChildAdapter(systemChildenData)
                 rv_system_children.adapter = rvSystemChildrenAdapter
+            }
+
+            rvSystemTreeAdapter?.rvItemClickListener = object:OnRvItemClickListener{
+                override fun onItemClick(position: Int) {
+                    systemChildenData.clear()
+                    LogUtils.d("systemfragiment","treeClick${it.data.get(position).children.size}")
+                    systemChildenData.addAll(it.data.get(position).children as ArrayList<SystemChildData>)
+                    rvSystemChildrenAdapter?.notifyDataSetChanged()
+                }
+
             }
 
 
