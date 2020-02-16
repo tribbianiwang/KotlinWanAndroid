@@ -1,9 +1,9 @@
 package com.wl.wanandroid.viewmodel
 
-import com.wl.wanandroid.bean.SystemTreeBean
+import com.wl.wanandroid.bean.ProjectTreeBean
 import com.wl.wanandroid.model.ProjectTreeModel
 
-class ProjectTreeViewModel:BaseViewModel<SystemTreeBean>() {
+class ProjectTreeViewModel:BaseViewModel<ProjectTreeBean>() {
     var systemTreeModel = ProjectTreeModel(this)
     init {
         baseModel = systemTreeModel

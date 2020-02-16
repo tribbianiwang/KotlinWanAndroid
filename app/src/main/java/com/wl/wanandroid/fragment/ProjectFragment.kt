@@ -8,8 +8,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.wl.wanandroid.R
 import com.wl.wanandroid.adapter.ProjectFragmentVpAdapter
-import com.wl.wanandroid.bean.SystemTreeBean
-import com.wl.wanandroid.bean.SystemTreeData
+import com.wl.wanandroid.bean.ProjectTreeBean
+import com.wl.wanandroid.bean.ProjectTreeData
 import com.wl.wanandroid.utils.AppConstants
 import com.wl.wanandroid.viewmodel.ProjectTreeViewModel
 import kotlinx.android.synthetic.main.layout_fragment_project.*
@@ -37,11 +37,11 @@ class ProjectFragment : BaseFragment() {
 
         lifecycle.addObserver(systemTreeViewModel)
 
-        var systemTreeObserver: Observer<SystemTreeBean> = object : Observer<SystemTreeBean> {
-            override fun onChanged(t: SystemTreeBean?) {
+        var systemTreeObserver: Observer<ProjectTreeBean> = object : Observer<ProjectTreeBean> {
+            override fun onChanged(t: ProjectTreeBean?) {
                 if (t?.data != null && t?.data.size > 0) {
 
-                        val smalldata: List<SystemTreeData> = t?.data.subList(0,5)
+                        val smalldata: List<ProjectTreeData> = t?.data.subList(0,5)
 
 
                     for (single in t?.data.withIndex()) {

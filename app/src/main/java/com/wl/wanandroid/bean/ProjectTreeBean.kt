@@ -1,12 +1,12 @@
 package com.wl.wanandroid.bean
 
-data class SystemTreeBean(
-    val `data`: List<SystemTreeData>,
+data class ProjectTreeBean(
+    val `data`: List<ProjectTreeData>,
     val errorCode: Int,
     val errorMsg: String
 )
 
-data class SystemTreeData(
+data class ProjectTreeData(
     val children: List<Any>,
     val courseId: Int,
     val id: Int,

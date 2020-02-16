@@ -5,7 +5,9 @@ object AppConstants {
 
     const val BANNER_URL = "banner/json"//首页轮播图
     const val PUBLIC_NUMBER_LIST_URL = "wxarticle/chapters/json"//获取公众号列表
-    const val SYSTEM_TREE_URL = "project/tree/json"//项目分类
+    const val PROJECT_TREE_URL = "project/tree/json"//项目分类
+
+    const val  SYSTEM_TREE_URL = "tree/json"//体系分类
 
 
 
