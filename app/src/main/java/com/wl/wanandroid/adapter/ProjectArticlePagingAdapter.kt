@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.wl.wanandroid.R
 import com.wl.wanandroid.bean.ProjectArticleData
+import com.wl.wanandroid.utils.ImageViewUtils
 import kotlinx.android.synthetic.main.layout_item_rv_home_publicnumber.view.*
 import kotlinx.android.synthetic.main.layout_item_rv_project_article.view.*
 
@@ -36,6 +37,9 @@ class ProjectArticlePagingAdapter :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val bean = getItem(position)
         holder.itemView.tv_title.setText(bean?.title)
+        holder.itemView.tv_author.text = bean?.author
+        holder.itemView.tv_date.text = bean?.niceDate
+        ImageViewUtils.showImage(holder.itemView.context,holder.itemView.iv_image,bean?.envelopePic,R.drawable.icon_placeholder,R.drawable.icon_placeholder)
     }
 
     inner class ViewHolder(@NonNull itemView: View) : RecyclerView.ViewHolder(itemView) {
