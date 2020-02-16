@@ -11,4 +11,8 @@
     <string name="load_failed">加载失败，点击重试</string>
     <string name="load_failed_no_network">网络失联了…\n请联网后点击重试</string>
     <string name="empty">空空如也</string>
+    <string name="string_login_hint">请登录</string>
+    <string name="string_collect">收藏</string>
+    <string name="string_setting">设置</string>
+    <string name="string_about">关于</string>
 </resources>
