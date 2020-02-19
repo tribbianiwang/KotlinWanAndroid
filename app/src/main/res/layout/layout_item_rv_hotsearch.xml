@@ -3,10 +3,13 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/bg_cornor_gray_white_rectangular"
+
     >
 
     <TextView
+        android:background="@drawable/bg_cornor_gray_white_rectangular"
+        android:layout_marginTop="@dimen/app_margin_left"
+        android:layout_marginLeft="@dimen/app_margin_left"
         android:padding="@dimen/app_margin_left"
         android:id="@+id/tv_key"
         android:layout_width="wrap_content"
