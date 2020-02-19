@@ -5,8 +5,11 @@ import android.app.Activity
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.billy.android.loading.Gloading
@@ -156,6 +159,17 @@ open class BaseActivity: AppCompatActivity() {
             return true
         }
         return false
+    }
+
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val intentFilter = IntentFilter()
+        intentFilter.addAction(AppConstants.USERLOGINBROADCAST)
+        intentFilter.addAction(AppConstants.USERLOGOUTBROADCAST)
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
+        registerReceiver(netBroadcastReceiver, intentFilter)
     }
 
     override fun onDestroy() {
