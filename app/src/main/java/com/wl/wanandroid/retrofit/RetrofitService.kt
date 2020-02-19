@@ -2,6 +2,7 @@ package com.wl.wanandroid.retrofit
 
 import com.wl.wanandroid.bean.*
 import com.wl.wanandroid.utils.AppConstants
+import com.wl.wanandroid.utils.AppConstants.HOT_SEARCH_URL
 import com.wl.wanandroid.utils.AppConstants.PROJECT_TREE_URL
 import com.wl.wanandroid.utils.AppConstants.SYSTEM_TREE_URL
 import retrofit2.http.*
@@ -25,7 +26,11 @@ interface  RetrofitService{
     fun getProjectArticles(@Path("page")page:String,@Query("cid")projectTreeId:String):Observable<ProjectArticleBean>
 
     @GET(SYSTEM_TREE_URL)
-    fun getSystemTree():Observable<SystemTreeBean>
+    fun getSystemTree():Observable<SystemTreeBean>//获得体系类别
+
+    @GET(HOT_SEARCH_URL)
+    fun getHotSearch():Observable<HotSearchBean>//获取热搜
+
 
 
 

@@ -24,20 +24,21 @@
             android:textStyle="bold"
             />
 
-        <EditText
+        <TextView
+            android:id="@+id/et_search"
             android:layout_marginTop="@dimen/margin_7dp"
             android:layout_marginBottom="@dimen/margin_7dp"
             android:layout_marginLeft="@dimen/app_margin_left"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="@string/string_input_search"
+            android:gravity="center_vertical"
+            android:text="@string/string_input_search"
             android:textSize="@dimen/small_text_size"
-            android:textColor="@color/design_text_black"
-            android:textColorHint="@color/design_text_gray"
+            android:textColor="@color/design_text_gray"
             android:paddingLeft="@dimen/app_margin_left"
             android:background="@drawable/bg_cornor_white_rectangular"
-            ></EditText>
+            ></TextView>
 
         <TextView
             android:paddingTop="@dimen/app_margin_right"

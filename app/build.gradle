@@ -65,4 +65,5 @@ dependencies {
     //Paging对RxJava2的原生支持
     implementation "android.arch.paging:rxjava2:1.0.0-rc1"
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.beloo.widget:ChipsLayoutManager:0.3.7@aar'
 }

@@ -8,6 +8,7 @@ object AppConstants {
     const val PROJECT_TREE_URL = "project/tree/json"//项目分类
 
     const val  SYSTEM_TREE_URL = "tree/json"//体系分类
+    const val HOT_SEARCH_URL = "hotkey/json"//热搜
 
 
 

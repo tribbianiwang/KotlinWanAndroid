@@ -1,5 +1,6 @@
 package com.wl.wanandroid.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -28,6 +29,7 @@ import com.wl.wanandroid.bean.HomeArticleData
 import kotlinx.android.synthetic.main.layout_home_rv_articles_header.view.*
 import android.widget.LinearLayout
 import com.tudaritest.util.OnRvItemClickListener
+import com.wl.wanandroid.activity.SearchActivity
 import com.wl.wanandroid.utils.T
 
 
@@ -151,6 +153,11 @@ class HomeFragment : BaseFragment() {
                 if (!haData) {
                 }
             })
+
+        et_search.setOnClickListener {
+            startActivity(Intent(context,SearchActivity::class.java))
+
+        }
 
     }
 

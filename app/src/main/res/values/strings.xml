@@ -16,4 +16,6 @@
     <string name="string_setting">设置</string>
     <string name="string_about">关于</string>
     <string name="string_input_search">你想要了解些什么呢</string>
+    <string name="string_search">搜索</string>
+    <string name="string_hot_search">搜索热词</string>
 </resources>
