@@ -26,7 +26,7 @@ open class BaseActivity: AppCompatActivity() {
     private var connectivityManager: ConnectivityManager? = null
     private var info: NetworkInfo? = null
 
-    private val fragmentBroadcastReceiver = object : BroadcastReceiver() {
+    private val netBroadcastReceiver = object : BroadcastReceiver() {
         @SuppressLint("MissingPermission")
         override fun onReceive(context: Context, intent: Intent) {
             when (intent.action) {
@@ -160,7 +160,7 @@ open class BaseActivity: AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        unregisterReceiver(fragmentBroadcastReceiver)
+        unregisterReceiver(netBroadcastReceiver)
 
         if (dialog != null && dialog!!.isShowing) {
             dialog!!.dismiss()

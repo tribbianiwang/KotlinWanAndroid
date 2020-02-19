@@ -31,6 +31,9 @@ interface  RetrofitService{
     @GET(HOT_SEARCH_URL)
     fun getHotSearch():Observable<HotSearchBean>//获取热搜
 
+    @POST("article/query/{page}/json")
+    fun startSearch(@Path("page")page: String,@Query("k")key:String):Observable<SearchResultBean>
+
 
 
 
