@@ -19,11 +19,12 @@ import java.util.ArrayList
 import androidx.core.app.ComponentActivity
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
+import com.wl.wanandroid.activity.BaseActivity
 import com.wl.wanandroid.utils.T
 
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

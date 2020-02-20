@@ -9,6 +9,7 @@ import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
+import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.billy.android.loading.Gloading
@@ -18,6 +19,12 @@ import com.wl.wanandroid.fragment.BaseFragment
 import com.wl.wanandroid.utils.AppConstants
 import com.wl.wanandroid.utils.LogUtils
 import com.wl.wanandroid.utils.T
+
+
+
+
+
+
 
 open class BaseActivity: AppCompatActivity() {
 
@@ -213,4 +220,29 @@ open class BaseActivity: AppCompatActivity() {
             }
         }
     }
+
+    /**
+     * 重写 activity切换方法 消除系统自带动画
+     * @param intent
+     */
+    override fun startActivity(intent: Intent) {
+        super.startActivity(intent)
+
+        overridePendingTransition(R.anim.anim_right_in, R.anim.anim_left_out)
+    }
+
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.anim_left_in, R.anim.anim_right_out)
+    }
+
+    override fun startActivityForResult(
+        intent: Intent,
+        requestCode: Int, @Nullable options: Bundle?
+    ) {
+        super.startActivityForResult(intent, requestCode, options)
+        overridePendingTransition(R.anim.anim_right_in, R.anim.anim_left_out)
+    }
+
 }

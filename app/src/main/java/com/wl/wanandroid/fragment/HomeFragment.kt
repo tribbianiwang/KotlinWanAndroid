@@ -155,6 +155,7 @@ class HomeFragment : BaseFragment() {
             })
 
         et_search.setOnClickListener {
+
             startActivity(Intent(context,SearchActivity::class.java))
 
         }
