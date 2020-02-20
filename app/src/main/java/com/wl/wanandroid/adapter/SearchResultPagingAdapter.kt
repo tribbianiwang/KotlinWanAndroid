@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.wl.wanandroid.R
 import com.wl.wanandroid.bean.SearchResultItemData
 import kotlinx.android.synthetic.main.layout_item_rv_project_article.view.*
+import kotlinx.android.synthetic.main.layout_item_rv_project_article.view.tv_title
+import kotlinx.android.synthetic.main.layout_item_rv_search_result.view.*
 
 class SearchResultPagingAdapter :
     PagedListAdapter<SearchResultItemData, SearchResultPagingAdapter.ViewHolder>(diffCallback) {
@@ -35,7 +37,9 @@ class SearchResultPagingAdapter :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val bean = getItem(position)
         holder.itemView.tv_title.setText(bean?.title)
-
+        holder.itemView.tv_super_chapter_name.setText(bean?.superChapterName)
+        holder.itemView.tv_user_name.setText(bean?.chapterName)
+        holder.itemView.tv_time.setText(bean?.niceShareDate)
     }
 
     inner class ViewHolder(@NonNull itemView: View) : RecyclerView.ViewHolder(itemView) {

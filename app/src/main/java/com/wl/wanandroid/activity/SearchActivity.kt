@@ -2,6 +2,7 @@ package com.wl.wanandroid.activity
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.paging.PagedList
@@ -75,7 +76,7 @@ class SearchActivity : BaseActivity() {
         getHotSearchViewModel.errorMsgLiveData.observe(this,errorMsgObserver)
 
         startSearchViewModel.baseResultLiveData.observe(this,searchResultBeanObserver)
-        startSearchViewModel.queryStatusLiveData.observe(this,queryStatusObserver)
+//        startSearchViewModel.queryStatusLiveData.observe(this,queryStatusObserver)
         startSearchViewModel.errorMsgLiveData.observe(this,errorMsgObserver)
 
         getHotSearchViewModel.getHotSearch()
@@ -98,6 +99,8 @@ class SearchActivity : BaseActivity() {
     fun startSearch(key:String){
         LogUtils.d("startSearch",key)
 //        startSearchViewModel.startSearch(0,key)
+        ll_hotsearch_history.visibility = View.GONE
+        rv_search_result.visibility = View.VISIBLE
 
         startSearchViewModel.getSearchResultLiveData().observe(this,
             Observer<PagedList<SearchResultItemData>> { datasBeans -> rvSearchResultAdapter.submitList(datasBeans) })
