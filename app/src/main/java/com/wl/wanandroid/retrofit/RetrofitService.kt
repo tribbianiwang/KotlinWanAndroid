@@ -35,6 +35,4 @@ interface  RetrofitService{
     fun startSearch(@Path("page")page: String,@Query("k")key:String):Observable<SearchResultBean>
 
 
-
-
 }

@@ -4,12 +4,16 @@ import android.os.Bundle
 import android.text.TextUtils
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.paging.PagedList
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.beloo.widget.chipslayoutmanager.ChipsLayoutManager
 import com.tudaritest.util.OnRvItemClickListener
 import com.wl.wanandroid.R
 import com.wl.wanandroid.adapter.RvHotSearchAdapter
+import com.wl.wanandroid.adapter.SearchResultPagingAdapter
 import com.wl.wanandroid.bean.HotSearchBean
 import com.wl.wanandroid.bean.SearchResultBean
+import com.wl.wanandroid.bean.SearchResultItemData
 import com.wl.wanandroid.utils.LogUtils
 import com.wl.wanandroid.utils.StringUtils
 import com.wl.wanandroid.viewmodel.GetHotSearchViewModel
@@ -20,7 +24,11 @@ class SearchActivity : BaseActivity() {
     lateinit var getHotSearchViewModel:GetHotSearchViewModel
     lateinit var startSearchViewModel:StartSearchViewModel
 
+
+
     var rvHotSearchAdapter:RvHotSearchAdapter?=null
+    lateinit var rvSearchResultAdapter:SearchResultPagingAdapter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +37,11 @@ class SearchActivity : BaseActivity() {
         rv_search_hot.layoutManager = ChipsLayoutManager.newBuilder(this)
             .setOrientation(ChipsLayoutManager.HORIZONTAL).setRowStrategy(ChipsLayoutManager.STRATEGY_FILL_SPACE)
             .build();
+
+        rvSearchResultAdapter = SearchResultPagingAdapter()
+
+        rv_search_result.layoutManager = LinearLayoutManager(this)
+        rv_search_result.adapter = rvSearchResultAdapter
 
         getHotSearchViewModel = ViewModelProviders.of(this).get(GetHotSearchViewModel::class.java)
         startSearchViewModel = ViewModelProviders.of(this).get(StartSearchViewModel::class.java)
@@ -84,6 +97,9 @@ class SearchActivity : BaseActivity() {
 
     fun startSearch(key:String){
         LogUtils.d("startSearch",key)
-        startSearchViewModel.startSearch(0,key)
+//        startSearchViewModel.startSearch(0,key)
+
+        startSearchViewModel.getSearchResultLiveData().observe(this,
+            Observer<PagedList<SearchResultItemData>> { datasBeans -> rvSearchResultAdapter.submitList(datasBeans) })
     }
 }

@@ -5,7 +5,7 @@
     <string name="string_project">项目</string>
     <string name="string_mine">我的</string>
     <string name="string_normal_net_error">网络错误</string>
-
+    <string name="string_notinput_warning">请输入关键字</string>
     <string name="str_none" />
     <string name="loading">加载中…</string>
     <string name="load_failed">加载失败，点击重试</string>
@@ -18,5 +18,4 @@
     <string name="string_input_search">你想要了解些什么呢</string>
     <string name="string_search">搜索</string>
     <string name="string_hot_search">搜索热词</string>
-    <string name="string_notinput_warning">请输入关键字</string>
 </resources>

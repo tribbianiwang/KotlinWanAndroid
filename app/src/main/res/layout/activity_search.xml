@@ -59,24 +59,24 @@
         android:orientation="vertical"
         >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/string_hot_search"
-        android:textSize="@dimen/small_text_size"
-        android:textColor="@color/design_text_black"
-        android:layout_marginLeft="@dimen/app_margin_right"
-        android:layout_marginTop="@dimen/app_margin_small"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_hot_search"
+            android:textSize="@dimen/small_text_size"
+            android:textColor="@color/design_text_black"
+            android:layout_marginLeft="@dimen/app_margin_right"
+            android:layout_marginTop="@dimen/app_margin_small"
+            />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="@dimen/app_margin_left"
-        android:layout_marginLeft="@dimen/app_margin_right"
-        android:layout_marginRight="@dimen/app_margin_right"
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="@dimen/app_margin_left"
+            android:layout_marginLeft="@dimen/app_margin_right"
+            android:layout_marginRight="@dimen/app_margin_right"
 
-        android:id="@+id/rv_search_hot"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+            android:id="@+id/rv_search_hot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
