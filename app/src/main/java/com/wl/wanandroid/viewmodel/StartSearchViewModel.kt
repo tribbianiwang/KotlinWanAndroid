@@ -10,12 +10,13 @@ import androidx.paging.PagedList
 import com.wl.wanandroid.bean.SearchResultBean
 import com.wl.wanandroid.bean.SearchResultItemData
 import com.wl.wanandroid.model.StartSearchModel
+import com.wl.wanandroid.utils.LogUtils
 
 class StartSearchViewModel:BaseViewModel<SearchResultBean>() {
     var startSearchModel = StartSearchModel(this)
 
-    private var articleRes: LiveData<PagedList<SearchResultItemData>>? = null
-    private var mDataSource: ArticleDataSource? = null
+     var articleRes: LiveData<PagedList<SearchResultItemData>>? = null
+     var mDataSource: SearchDataSource? = null
     var searchKey:String=""
 
     //是否有数据
@@ -28,6 +29,7 @@ class StartSearchViewModel:BaseViewModel<SearchResultBean>() {
 
     fun startSearch(page: String, initDataCallBack: PageKeyedDataSource.LoadInitialCallback<Int, SearchResultItemData>?, loadMoreCallback:PageKeyedDataSource.LoadCallback<Int, SearchResultItemData>?){
         startSearchModel?.startSearch(page,searchKey,initDataCallBack,loadMoreCallback,boundaryPageData)
+
 
     }
 
@@ -47,10 +49,11 @@ class StartSearchViewModel:BaseViewModel<SearchResultBean>() {
     private val mFactory = object : DataSource.Factory<Int, SearchResultItemData>() {
         @NonNull
         override fun create(): DataSource<Int, SearchResultItemData> {
-            if (mDataSource == null) {
-                mDataSource = ArticleDataSource()
-            }
-            return mDataSource as ArticleDataSource
+            LogUtils.d("datasource","key:${searchKey}")
+//            if (mDataSource == null) {
+                mDataSource = SearchDataSource()
+//            }
+            return mDataSource as SearchDataSource
         }
     }
 
@@ -80,7 +83,8 @@ class StartSearchViewModel:BaseViewModel<SearchResultBean>() {
             }
         }
 
-    fun getDataSource(): ArticleDataSource? {
+    fun getDataSource(): SearchDataSource? {
+
         return mDataSource
     }
 
@@ -88,11 +92,12 @@ class StartSearchViewModel:BaseViewModel<SearchResultBean>() {
         return boundaryPageData
     }
 
-    inner class ArticleDataSource : PageKeyedDataSource<Int, SearchResultItemData>() {
+    inner class SearchDataSource : PageKeyedDataSource<Int, SearchResultItemData>() {
         override fun loadInitial(
             params: PageKeyedDataSource.LoadInitialParams<Int>,
             callback: PageKeyedDataSource.LoadInitialCallback<Int, SearchResultItemData>
         ) {
+            LogUtils.d("startsearchviewmodel","loadinit:${searchKey}")
             //开始加载数据
             startSearch(0.toString(),callback,null)
 //            loadData(0, callback, null)

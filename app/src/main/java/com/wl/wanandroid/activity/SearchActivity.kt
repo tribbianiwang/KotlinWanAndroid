@@ -39,9 +39,10 @@ class SearchActivity : BaseActivity() {
             .setOrientation(ChipsLayoutManager.HORIZONTAL).setRowStrategy(ChipsLayoutManager.STRATEGY_FILL_SPACE)
             .build();
 
-        rvSearchResultAdapter = SearchResultPagingAdapter()
+
 
         rv_search_result.layoutManager = LinearLayoutManager(this)
+        rvSearchResultAdapter = SearchResultPagingAdapter()
         rv_search_result.adapter = rvSearchResultAdapter
 
         getHotSearchViewModel = ViewModelProviders.of(this).get(GetHotSearchViewModel::class.java)
@@ -97,12 +98,16 @@ class SearchActivity : BaseActivity() {
     }
 
     fun startSearch(key:String){
-        LogUtils.d("startSearch",key)
-//        startSearchViewModel.startSearch(0,key)
+
         ll_hotsearch_history.visibility = View.GONE
         rv_search_result.visibility = View.VISIBLE
+        startSearchViewModel.searchKey = key
+
+        startSearchViewModel.getDataSource()?.invalidate()
 
         startSearchViewModel.getSearchResultLiveData().observe(this,
-            Observer<PagedList<SearchResultItemData>> { datasBeans -> rvSearchResultAdapter.submitList(datasBeans) })
+            Observer<PagedList<SearchResultItemData>> { datasBeans ->
+
+                rvSearchResultAdapter.submitList(datasBeans) })
     }
 }
