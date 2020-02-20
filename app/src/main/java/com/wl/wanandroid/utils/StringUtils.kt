@@ -103,6 +103,30 @@ object StringUtils {
 
     }
 
+    /**
+     * 去掉字符串里面的html代码。<br></br>
+     * 要求数据要规范，比如大于小于号要配套,否则会被集体误杀。
+     *
+     * @param content 内容
+     * @return 去掉后的内容
+     */
+
+    fun stripHtml(content: String): String {
+        var content = content
+        // <p>段落替换为换行
+        content = content.replace("<p .*?>".toRegex(), "\r\n")
+        // <br><br/>替换为换行
+        content = content.replace("<br\\s*/?>".toRegex(), "\r\n")
+        // 去掉其它的<>之间的东西
+        content = content.replace("\\<.*?>".toRegex(), "")
+        // 还原HTML
+        // content = HTMLDecoder.decode(content);
+        //&ldquo;&quot;&nbsp;
+        content = content.replace("&.dquo;".toRegex(), "\"")
+        content = content.replace("&nbsp;".toRegex(), " ")
+        return content
+    }
+
     fun parseDouble(stringDouble:String?):Double{
         var doubleResult = 0.toDouble()
         try {
