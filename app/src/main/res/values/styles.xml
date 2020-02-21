@@ -44,6 +44,12 @@
 
     </style>
 
+    <style name="ToolBarStyle" parent="Theme.AppCompat.NoActionBar">
+        <item name="actionMenuTextColor">@android:color/white</item>
+        <!-- 标题titile字体颜色 -->
+        <item name="android:textColorPrimary">#FFFFFF</item>
+    </style>
+
 
 
 </resources>

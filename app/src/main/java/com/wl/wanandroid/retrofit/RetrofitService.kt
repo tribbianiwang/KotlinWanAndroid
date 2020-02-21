@@ -35,4 +35,8 @@ interface  RetrofitService{
     fun startSearch(@Path("page")page: String,@Query("k")key:String):Observable<SearchResultBean>
 
 
+    @GET("wxarticle/list/{id}/{page}/json")
+    fun getPublicNumber(@Path("id")id: String,@Path("page")page:String):Observable<PublicNumberArticleBean>
+
+
 }
