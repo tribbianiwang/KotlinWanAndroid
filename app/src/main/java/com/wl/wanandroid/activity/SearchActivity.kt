@@ -153,7 +153,7 @@ class SearchActivity : BaseActivity() {
 
         startSearchViewModel.getSearchResultLiveData().observe(this,
             Observer<PagedList<SearchResultItemData>> { datasBeans ->
-
+                LogUtils.d("searchResultSize","${datasBeans.size}")
                 rvSearchResultAdapter.submitList(datasBeans) })
 
         searchHistoryDao.insertSearchHistory(SearchHistoryKeyDaoBean(key))

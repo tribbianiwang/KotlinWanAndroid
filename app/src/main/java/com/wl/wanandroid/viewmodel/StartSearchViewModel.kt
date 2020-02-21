@@ -38,7 +38,7 @@ class StartSearchViewModel:BaseViewModel<SearchResultBean>() {
         if (articleRes == null) {
             val config = PagedList.Config.Builder()
                 .setPageSize(20)
-                .setInitialLoadSizeHint(22)
+                .setInitialLoadSizeHint(20)
                 .build()
             articleRes = LivePagedListBuilder<Int, SearchResultItemData>(mFactory, config).setBoundaryCallback(mBoundaryCallback).build()
         }

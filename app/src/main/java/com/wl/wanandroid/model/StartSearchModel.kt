@@ -24,6 +24,9 @@ class StartSearchModel(dataResultListener: BaseDataResultListener<SearchResultBe
                         dataResultListener.setQueryStatus(AppConstants.QUERYSTATUSNOMORE)
                         boundaryPageData.postValue(true);
                     }else{
+                        boundaryPageData.postValue(false);
+                    }
+
                         dataResultListener.setQueryStatus(AppConstants.QUERYSTATUSSUCCESS)
                         dataResultListener.setResultData(t)
                         if (initDataCallBack != null) {
@@ -32,8 +35,8 @@ class StartSearchModel(dataResultListener: BaseDataResultListener<SearchResultBe
                             loadMoreCallback?.onResult(t.data.datas, page.toInt());
                         }
 
-                        boundaryPageData.postValue(false);
-                    }
+
+
                 }
 
 
