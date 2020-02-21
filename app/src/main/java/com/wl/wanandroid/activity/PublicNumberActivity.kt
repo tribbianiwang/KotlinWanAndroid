@@ -6,9 +6,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.wl.wanandroid.R
+import com.wl.wanandroid.adapter.PublicNumberArticlePagingAdapter
 import com.wl.wanandroid.bean.PublicNumberArticleBean
+import com.wl.wanandroid.bean.PublicNumberArticleData
 import com.wl.wanandroid.model.GetPublicNumberArticleModel
 import com.wl.wanandroid.utils.AppConstants
 import com.wl.wanandroid.utils.LogUtils
@@ -23,6 +26,8 @@ class PublicNumberActivity : BaseActivity() {
     var publicNumberId:Int = 0
     lateinit var getPublicNumberArticleViewModel :GetPublicNumberArticleViweModel
 
+    lateinit var publicNumberArticleAdapter:PublicNumberArticlePagingAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_public_number)
@@ -31,7 +36,8 @@ class PublicNumberActivity : BaseActivity() {
 
         initToolbar()
         rv_publicnumber_articles.layoutManager = LinearLayoutManager(this)
-
+        publicNumberArticleAdapter = PublicNumberArticlePagingAdapter()
+        rv_publicnumber_articles.adapter = publicNumberArticleAdapter
 
         getPublicNumberArticleViewModel = ViewModelProviders.of(this).get(GetPublicNumberArticleViweModel::class.java)
 
@@ -44,10 +50,12 @@ class PublicNumberActivity : BaseActivity() {
         setGloadView(rv_publicnumber_articles)
 
         getPublicNumberArticleViewModel.baseResultLiveData.observe(this,publicNumberArticleObserver)
-        getPublicNumberArticleViewModel.queryStatusLiveData.observe(this,gLoadingqueryStatusObserver)
+//        getPublicNumberArticleViewModel.queryStatusLiveData.observe(this,gLoadingqueryStatusObserver)
         getPublicNumberArticleViewModel.errorMsgLiveData.observe(this,errorMsgObserver)
 
-        getPublicNumberArticleViewModel.getPublicNumber( publicNumberId.toString(),0.toString())
+        getPublicNumberArticleViewModel.publicNumberId = publicNumberId.toString()
+        getPublicNumberArticleViewModel.getArticleLiveData().observe(this,
+            Observer<PagedList<PublicNumberArticleData>> { datasBeans -> publicNumberArticleAdapter.submitList(datasBeans) })
     }
 
     private fun initToolbar() {
