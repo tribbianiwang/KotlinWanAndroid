@@ -6,6 +6,7 @@ import com.wl.wanandroid.bean.SearchResultBean
 import com.wl.wanandroid.bean.SearchResultItemData
 import com.wl.wanandroid.utils.AppConstants
 import com.wl.wanandroid.utils.BaseDataResultListener
+import com.wl.wanandroid.utils.LogUtils
 
 class StartSearchModel(dataResultListener: BaseDataResultListener<SearchResultBean>) :
     BaseModel<SearchResultBean>(dataResultListener) {
@@ -27,6 +28,7 @@ class StartSearchModel(dataResultListener: BaseDataResultListener<SearchResultBe
                         boundaryPageData.postValue(false);
                     }
 
+                    if(t.data.datas.size>0){
                         dataResultListener.setQueryStatus(AppConstants.QUERYSTATUSSUCCESS)
                         dataResultListener.setResultData(t)
                         if (initDataCallBack != null) {
@@ -34,6 +36,12 @@ class StartSearchModel(dataResultListener: BaseDataResultListener<SearchResultBe
                         } else {
                             loadMoreCallback?.onResult(t.data.datas, page.toInt());
                         }
+                    }else{
+                        LogUtils.d("showempty","inmodel")
+                        dataResultListener.setQueryStatus(AppConstants.QUERYSTATUSEMPTY)
+                    }
+
+
 
 
 

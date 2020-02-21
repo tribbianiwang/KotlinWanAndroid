@@ -9,11 +9,13 @@ import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
+import android.view.View
 import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.billy.android.loading.Gloading
 import com.wl.wanandroid.R
+import com.wl.wanandroid.adapter.GlobalAdapter
 import com.wl.wanandroid.dialog.AlertDialog
 import com.wl.wanandroid.fragment.BaseFragment
 import com.wl.wanandroid.utils.AppConstants
@@ -143,6 +145,8 @@ open class BaseActivity: AppCompatActivity() {
     }
 
     fun showEmpty() {
+        LogUtils.d("showempty","startshowepmty")
+
         if (mHolder != null) {
             mHolder!!.showEmpty()
         }
@@ -169,7 +173,7 @@ open class BaseActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        Gloading.initDefault(GlobalAdapter())
         val intentFilter = IntentFilter()
         intentFilter.addAction(AppConstants.USERLOGINBROADCAST)
         intentFilter.addAction(AppConstants.USERLOGOUTBROADCAST)
@@ -186,7 +190,17 @@ open class BaseActivity: AppCompatActivity() {
         }
         dialog = null
     }
+    var contentViewWithoutTitle:View?=null
+    fun setGloadView(contentView: View){
+        this.contentViewWithoutTitle = contentView
+        initLoadingStatusViewIfNeedViewView(contentView);
+    }
+    protected fun initLoadingStatusViewIfNeedViewView(contentView: View) {
 
+        //bind status view to activity root view by default
+        mHolder = Gloading.getDefault().wrap(contentView).withRetry { onLoadRetry() }
+
+    }
 
 
     companion object {

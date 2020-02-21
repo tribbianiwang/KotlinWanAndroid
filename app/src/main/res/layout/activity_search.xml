@@ -24,16 +24,17 @@
             />
 
         <EditText
-
             android:id="@+id/et_search"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:textSize="@dimen/small_text_size"
-            android:maxLines="1"
+          android:singleLine="true"
+            android:inputType="text"
             android:hint="输入关键字搜索文章"
             android:textColor="@color/design_text_black"
             android:textColorHint="@color/design_text_gray"
+            android:imeOptions="actionSearch"
             ></EditText>
 
         <TextView

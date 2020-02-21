@@ -3,6 +3,7 @@ package com.wl.wanandroid.activity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.paging.PagedList
@@ -24,10 +25,10 @@ import com.wl.wanandroid.utils.StringUtils
 import com.wl.wanandroid.viewmodel.GetHotSearchViewModel
 import com.wl.wanandroid.viewmodel.StartSearchViewModel
 import kotlinx.android.synthetic.main.activity_search.*
-import rx.Observable
-import rx.Subscriber
-import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
+
+import android.content.Context
+import android.view.inputmethod.InputMethodManager
+
 
 class SearchActivity : BaseActivity() {
     lateinit var getHotSearchViewModel:GetHotSearchViewModel
@@ -82,7 +83,7 @@ class SearchActivity : BaseActivity() {
         }
 
 
-
+        setGloadView(rv_search_result)
 
 
 
@@ -123,7 +124,7 @@ class SearchActivity : BaseActivity() {
         getHotSearchViewModel.errorMsgLiveData.observe(this,errorMsgObserver)
 
         startSearchViewModel.baseResultLiveData.observe(this,searchResultBeanObserver)
-//        startSearchViewModel.queryStatusLiveData.observe(this,queryStatusObserver)
+        startSearchViewModel.queryStatusLiveData.observe(this,gLoadingqueryStatusObserver)
         startSearchViewModel.errorMsgLiveData.observe(this,errorMsgObserver)
 
         getHotSearchViewModel.getHotSearch()
@@ -141,9 +142,34 @@ class SearchActivity : BaseActivity() {
         iv_close.setOnClickListener {
             finish()
         }
+
+        et_search.setOnEditorActionListener { v, actionId, event ->
+
+            if(actionId==EditorInfo.IME_ACTION_SEARCH){
+                (et_search.getContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager)
+                    .hideSoftInputFromWindow(
+
+                            this.getCurrentFocus()?.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS
+                    )
+
+                if(TextUtils.isEmpty(et_search.text.toString())){
+                    et_search.setError(StringUtils.getString(R.string.string_notinput_warning))
+                }else{
+                    startSearch(et_search.text.toString())
+                }
+                 true
+            }else{
+                 false
+            }
+
+
+        }
+
+
     }
 
     fun startSearch(key:String){
+        et_search.setText(key)
 
         ll_hotsearch_history.visibility = View.GONE
         rv_search_result.visibility = View.VISIBLE
@@ -163,6 +189,11 @@ class SearchActivity : BaseActivity() {
 
     }
 
+
+    override fun onLoadRetry() {
+        super.onLoadRetry()
+        startSearch(et_search.text.toString())
+    }
 
 
 
