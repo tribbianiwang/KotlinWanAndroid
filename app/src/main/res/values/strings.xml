@@ -18,4 +18,5 @@
     <string name="string_input_search">你想要了解些什么呢</string>
     <string name="string_search">搜索</string>
     <string name="string_hot_search">搜索热词</string>
+    <string name="string_search_history">历史记录</string>
 </resources>

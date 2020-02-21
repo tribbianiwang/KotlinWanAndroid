@@ -11,23 +11,33 @@ import com.beloo.widget.chipslayoutmanager.ChipsLayoutManager
 import com.tudaritest.util.OnRvItemClickListener
 import com.wl.wanandroid.R
 import com.wl.wanandroid.adapter.RvHotSearchAdapter
+import com.wl.wanandroid.adapter.RvSearchHistoryAdapter
 import com.wl.wanandroid.adapter.SearchResultPagingAdapter
 import com.wl.wanandroid.bean.HotSearchBean
 import com.wl.wanandroid.bean.SearchResultBean
 import com.wl.wanandroid.bean.SearchResultItemData
+import com.wl.wanandroid.dao.AppDataBase
+import com.wl.wanandroid.dao.SearchHistoryDao
+import com.wl.wanandroid.dao.SearchHistoryKeyDaoBean
 import com.wl.wanandroid.utils.LogUtils
 import com.wl.wanandroid.utils.StringUtils
 import com.wl.wanandroid.viewmodel.GetHotSearchViewModel
 import com.wl.wanandroid.viewmodel.StartSearchViewModel
 import kotlinx.android.synthetic.main.activity_search.*
+import rx.Observable
+import rx.Subscriber
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
 
 class SearchActivity : BaseActivity() {
     lateinit var getHotSearchViewModel:GetHotSearchViewModel
     lateinit var startSearchViewModel:StartSearchViewModel
-
+    lateinit var   searchHistoryDao:SearchHistoryDao
+    var searchHistoryKeyBeans :List<SearchHistoryKeyDaoBean> = ArrayList()
 
 
     var rvHotSearchAdapter:RvHotSearchAdapter?=null
+    var rvSearchHistoryAdapter:RvSearchHistoryAdapter?=null
     lateinit var rvSearchResultAdapter:SearchResultPagingAdapter
 
 
@@ -38,6 +48,42 @@ class SearchActivity : BaseActivity() {
         rv_search_hot.layoutManager = ChipsLayoutManager.newBuilder(this)
             .setOrientation(ChipsLayoutManager.HORIZONTAL).setRowStrategy(ChipsLayoutManager.STRATEGY_FILL_SPACE)
             .build();
+        rv_search_history.layoutManager = ChipsLayoutManager.newBuilder(this)
+            .setOrientation(ChipsLayoutManager.HORIZONTAL).setRowStrategy(ChipsLayoutManager.STRATEGY_FILL_SPACE)
+            .build();
+
+        searchHistoryDao = AppDataBase.getDatabase(this).searchHistoryDao()
+
+        searchHistoryKeyBeans = searchHistoryDao.getAllSearchHistory()
+        if(searchHistoryKeyBeans.size==0){
+            rl_search_history.visibility = View.GONE
+            rv_search_history.visibility =View.GONE
+        }else{
+            rl_search_history.visibility = View.VISIBLE
+            rv_search_history.visibility =View.VISIBLE
+
+            rvSearchHistoryAdapter = RvSearchHistoryAdapter(searchHistoryKeyBeans)
+            rv_search_history.adapter  = rvSearchHistoryAdapter
+            rvSearchHistoryAdapter?.onItemClickListener = object :OnRvItemClickListener{
+                override fun onItemClick(position: Int) {
+
+                    searchHistoryKeyBeans.get(position)?.searchKey?.let { startSearch(it) }
+                }
+
+            }
+
+            iv_clear_search_history.setOnClickListener {
+                searchHistoryDao.deleteAllSearchHistory()
+                rl_search_history.visibility = View.GONE
+                rv_search_history.visibility =View.GONE
+            }
+
+            LogUtils.d("searchHistorySize:","size:${searchHistoryKeyBeans.size}")
+        }
+
+
+
+
 
 
 
@@ -109,5 +155,15 @@ class SearchActivity : BaseActivity() {
             Observer<PagedList<SearchResultItemData>> { datasBeans ->
 
                 rvSearchResultAdapter.submitList(datasBeans) })
+
+        searchHistoryDao.insertSearchHistory(SearchHistoryKeyDaoBean(key))
+
+
+
+
     }
+
+
+
+
 }
