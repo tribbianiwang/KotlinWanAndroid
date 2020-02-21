@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.tudaritest.util.DensityUtils
+import com.tudaritest.util.OnRvItemClickListener
 import com.wl.wanandroid.R
 import com.wl.wanandroid.bean.PublicNumberListBeanData
 import com.wl.wanandroid.utils.LogUtils
@@ -18,6 +19,9 @@ import kotlinx.android.synthetic.main.layout_item_rv_home_publicnumber.view.*
 
 class RvHomePublicNumberAdapter(publicNumberData: List<PublicNumberListBeanData>) :RecyclerView.Adapter<RvHomePublicNumberAdapter.ViewHolder>() {
     var publicNumberData: List<PublicNumberListBeanData>
+
+    var onRvItemClickListener:OnRvItemClickListener?=null
+
     init {
         this.publicNumberData = publicNumberData
     }
@@ -42,7 +46,9 @@ class RvHomePublicNumberAdapter(publicNumberData: List<PublicNumberListBeanData>
         val layoutParams = holder.itemView.ll_root.layoutParams
         layoutParams.width = (ScreenUtils.getScreenWidth(holder.itemView.context as Activity)) / 5;//
         holder.itemView.ll_root.setLayoutParams(layoutParams);
-
+        holder.itemView.setOnClickListener {
+            onRvItemClickListener?.onItemClick(position)
+        }
 
 
 

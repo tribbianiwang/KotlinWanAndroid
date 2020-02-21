@@ -1,6 +1,8 @@
 package com.wl.wanandroid.utils
 object AppConstants {
 
+    val PUBLIC_NUMBER_NAME: String = "PUBLIC_NUMBER_NAME"
+    val PUBLIC_NUMBER_ID: String = "PUBLIC_NUMBER_ID"
     val BASEROOTURL = "https://www.wanandroid.com/"
 
     const val BANNER_URL = "banner/json"//首页轮播图

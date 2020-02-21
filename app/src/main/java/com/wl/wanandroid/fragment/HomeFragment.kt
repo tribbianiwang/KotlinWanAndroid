@@ -29,7 +29,9 @@ import com.wl.wanandroid.bean.HomeArticleData
 import kotlinx.android.synthetic.main.layout_home_rv_articles_header.view.*
 import android.widget.LinearLayout
 import com.tudaritest.util.OnRvItemClickListener
+import com.wl.wanandroid.activity.PublicNumberActivity
 import com.wl.wanandroid.activity.SearchActivity
+import com.wl.wanandroid.utils.AppConstants
 import com.wl.wanandroid.utils.T
 
 
@@ -99,6 +101,19 @@ class HomeFragment : BaseFragment() {
             mainRvContentHeader.hIndicator.bindRecyclerView(mainRvContentHeader.rv_publicnumber)
             var rvHomePublicNumberAdapter = RvHomePublicNumberAdapter(it.data)
             mainRvContentHeader.rv_publicnumber.adapter = rvHomePublicNumberAdapter
+
+            rvHomePublicNumberAdapter.onRvItemClickListener = object :OnRvItemClickListener{
+                override fun onItemClick(position: Int) {
+                    var intent = Intent(context,PublicNumberActivity::class.java)
+                    LogUtils.d("homfragmenttrans","name:${it.data.get(position).name},id:${it.data.get(position).id}")
+                    intent.putExtra(AppConstants.PUBLIC_NUMBER_NAME,it.data.get(position).name)
+                    intent.putExtra(AppConstants.PUBLIC_NUMBER_ID,it.data.get(position).id)
+                    startActivity(intent)
+                }
+
+
+            }
+
 
             //设置banner相关
             mainRvContentHeader.ulBanner?.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL)
