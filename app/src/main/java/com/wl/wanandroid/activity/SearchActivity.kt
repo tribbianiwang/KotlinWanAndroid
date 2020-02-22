@@ -28,6 +28,7 @@ import kotlinx.android.synthetic.main.activity_search.*
 
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
+import com.wl.wanandroid.utils.ImmerBarUtils
 
 
 class SearchActivity : BaseActivity() {
@@ -45,7 +46,7 @@ class SearchActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
-
+        ImmerBarUtils.initImmerBar(this,R.color.alpha_gray_white)
         rv_search_hot.layoutManager = ChipsLayoutManager.newBuilder(this)
             .setOrientation(ChipsLayoutManager.HORIZONTAL).setRowStrategy(ChipsLayoutManager.STRATEGY_FILL_SPACE)
             .build();

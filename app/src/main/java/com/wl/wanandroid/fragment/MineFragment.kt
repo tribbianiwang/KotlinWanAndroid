@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatViewInflater
 import androidx.fragment.app.Fragment
 import com.wl.wanandroid.R
+import com.wl.wanandroid.utils.ImmerBarUtils
 
-class MineFragment : Fragment() {
+class MineFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -20,4 +21,10 @@ class MineFragment : Fragment() {
 
         return contentView
     }
+
+    override fun initImmersionBar() {
+        super.initImmersionBar()
+        ImmerBarUtils.initImmerBar(this,R.color.white)
+    }
+
 }

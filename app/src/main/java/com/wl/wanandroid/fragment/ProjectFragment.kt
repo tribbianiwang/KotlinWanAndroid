@@ -11,6 +11,7 @@ import com.wl.wanandroid.adapter.ProjectFragmentVpAdapter
 import com.wl.wanandroid.bean.ProjectTreeBean
 import com.wl.wanandroid.bean.ProjectTreeData
 import com.wl.wanandroid.utils.AppConstants
+import com.wl.wanandroid.utils.ImmerBarUtils
 import com.wl.wanandroid.viewmodel.ProjectTreeViewModel
 import kotlinx.android.synthetic.main.layout_fragment_project.*
 
@@ -33,6 +34,8 @@ class ProjectFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         systemTreeViewModel = ViewModelProviders.of(this).get(ProjectTreeViewModel::class.java)
 
         lifecycle.addObserver(systemTreeViewModel)
@@ -78,6 +81,11 @@ class ProjectFragment : BaseFragment() {
 
         systemTreeViewModel.getSystemTree()
 
+    }
+
+    override fun initImmersionBar() {
+        super.initImmersionBar()
+        ImmerBarUtils.initImmerBar(this,R.color.alpha_gray_white)
     }
 
 

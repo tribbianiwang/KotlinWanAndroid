@@ -32,6 +32,7 @@ import com.tudaritest.util.OnRvItemClickListener
 import com.wl.wanandroid.activity.PublicNumberActivity
 import com.wl.wanandroid.activity.SearchActivity
 import com.wl.wanandroid.utils.AppConstants
+import com.wl.wanandroid.utils.ImmerBarUtils
 import com.wl.wanandroid.utils.T
 
 
@@ -175,6 +176,12 @@ class HomeFragment : BaseFragment() {
         }
 
     }
+
+    override fun initImmersionBar() {
+        super.initImmersionBar()
+        ImmerBarUtils.initImmerBar(this,R.color.theme_red)
+    }
+
 
 
 }

@@ -12,6 +12,8 @@ import android.webkit.WebView
 import android.webkit.WebChromeClient
 import android.webkit.WebViewClient
 import cn.sharesdk.onekeyshare.OnekeyShare
+import com.gyf.immersionbar.components.ImmersionProxy
+import com.wl.wanandroid.utils.ImmerBarUtils
 import com.wl.wanandroid.utils.StringUtils
 import com.wl.wanandroid.utils.StringUtils.setClipboard
 
@@ -24,6 +26,8 @@ class ArticleDetailActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_article_detail)
+        ImmerBarUtils.initImmerBar(this,R.color.alpha_gray_white)
+
         articleTitle = intent.getStringExtra(ARTICLE_TITLE)
         articleUrl =  intent.getStringExtra(ARTICLE_URL)
         articleId =  intent.getIntExtra(ARTICLE_ID,0)

@@ -15,6 +15,7 @@ import com.wl.wanandroid.bean.SystemChildArticleBean
 import com.wl.wanandroid.bean.SystemChildArticleItemData
 import com.wl.wanandroid.model.GetSystemChildArticlesModel
 import com.wl.wanandroid.utils.AppConstants
+import com.wl.wanandroid.utils.ImmerBarUtils
 import com.wl.wanandroid.utils.LogUtils
 import com.wl.wanandroid.viewmodel.GetSystemChildArticleViewModel
 import kotlinx.android.synthetic.main.activity_public_number.*
@@ -33,7 +34,7 @@ class SystemChildActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_system_child)
-
+        ImmerBarUtils.initImmerBar(this,R.color.alpha_gray_white)
 
         systemChildName = intent.getStringExtra(AppConstants.SYSTEM_NAME)
         systemChildId = intent.getIntExtra(AppConstants.SYSTEM_ID,0)

@@ -14,6 +14,7 @@ import com.wl.wanandroid.bean.PublicNumberArticleBean
 import com.wl.wanandroid.bean.PublicNumberArticleData
 import com.wl.wanandroid.model.GetPublicNumberArticleModel
 import com.wl.wanandroid.utils.AppConstants
+import com.wl.wanandroid.utils.ImmerBarUtils
 import com.wl.wanandroid.utils.LogUtils
 import com.wl.wanandroid.viewmodel.GetPublicNumberArticleViweModel
 
@@ -31,6 +32,7 @@ class PublicNumberActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_public_number)
+        ImmerBarUtils.initImmerBar(this,R.color.alpha_gray_white)
         publicNumberName = intent.getStringExtra(AppConstants.PUBLIC_NUMBER_NAME)
         publicNumberId = intent.getIntExtra(AppConstants.PUBLIC_NUMBER_ID,0)
 

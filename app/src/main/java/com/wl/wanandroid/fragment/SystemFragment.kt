@@ -18,6 +18,7 @@ import com.wl.wanandroid.adapter.RvSystemTreeAdapter
 import com.wl.wanandroid.bean.SystemChildData
 import com.wl.wanandroid.bean.SystemTreeBean
 import com.wl.wanandroid.utils.AppConstants
+import com.wl.wanandroid.utils.ImmerBarUtils
 import com.wl.wanandroid.utils.LogUtils
 import com.wl.wanandroid.viewmodel.SystemTreeViewModel
 import kotlinx.android.synthetic.main.layout_fragment_system.*
@@ -94,6 +95,12 @@ class SystemFragment : BaseFragment() {
         systemTreeViewModel.getSystemTree()
 
 
+    }
+
+
+    override fun initImmersionBar() {
+        super.initImmersionBar()
+        ImmerBarUtils.initImmerBar(this,R.color.white)
     }
 
 
