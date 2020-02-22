@@ -18,7 +18,6 @@ import com.wl.wanandroid.bean.BannerBean
 import com.wl.wanandroid.bean.HomeArticleBean
 import com.wl.wanandroid.bean.PublicNumberListBean
 import com.wl.wanandroid.utils.AppConstants.HOME_BANNER_LOOP_TIME
-import com.wl.wanandroid.utils.LogUtils
 import com.wl.wanandroid.viewmodel.BannerViewModel
 import com.wl.wanandroid.viewmodel.HomeArticleViewModel
 import com.wl.wanandroid.viewmodel.PublicNumberListViewModel
@@ -31,9 +30,7 @@ import android.widget.LinearLayout
 import com.tudaritest.util.OnRvItemClickListener
 import com.wl.wanandroid.activity.PublicNumberActivity
 import com.wl.wanandroid.activity.SearchActivity
-import com.wl.wanandroid.utils.AppConstants
-import com.wl.wanandroid.utils.ImmerBarUtils
-import com.wl.wanandroid.utils.T
+import com.wl.wanandroid.utils.*
 
 
 class HomeFragment : BaseFragment() {
@@ -127,10 +124,12 @@ class HomeFragment : BaseFragment() {
             mainRvContentHeader.ulBanner?.adapter = bannerBean?.let { PagerHomeBannerAdapter(it.data) }
 
 
-            homeArticlePagingAdapter.mListener = object:OnRvItemClickListener{
+            homeArticlePagingAdapter.onRvItemClickListener = object:OnRvItemClickListener{
                 override fun onItemClick(position: Int) {
 
-                    LogUtils.d("homeFragment,","onClickTitle:${homeArticlePagingAdapter.getItemBean(position)?.title}")
+                    context?.let {   ActivityUtils.skipToArticle(it,homeArticlePagingAdapter.getItemBean(position)?.id?:0,
+                        homeArticlePagingAdapter.getItemBean(position)?.title?:"",homeArticlePagingAdapter?.getItemBean(position)?.link?:"") }
+
                 }
 
             }

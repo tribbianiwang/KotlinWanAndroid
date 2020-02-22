@@ -28,6 +28,7 @@ import kotlinx.android.synthetic.main.activity_search.*
 
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
+import com.wl.wanandroid.utils.ActivityUtils
 import com.wl.wanandroid.utils.ImmerBarUtils
 
 
@@ -186,6 +187,14 @@ class SearchActivity : BaseActivity() {
         searchHistoryDao.insertSearchHistory(SearchHistoryKeyDaoBean(key))
 
 
+        rvSearchResultAdapter.onRvItemClickListener = object:OnRvItemClickListener{
+            override fun onItemClick(position: Int) {
+
+                ActivityUtils.skipToArticle(this@SearchActivity,rvSearchResultAdapter.getSearchItemBean(position).id,StringUtils.stripHtml(rvSearchResultAdapter.getSearchItemBean(position).title),rvSearchResultAdapter.getSearchItemBean(position).link)
+
+            }
+
+        }
 
 
     }

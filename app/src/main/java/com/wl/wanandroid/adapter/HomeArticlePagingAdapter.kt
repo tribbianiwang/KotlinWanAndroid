@@ -31,7 +31,7 @@ class HomeArticlePagingAdapter() :
     val TYPE_NORMAL = 1
 
      var mHeaderView: View? = null
-     var mListener: OnRvItemClickListener? = null
+     var onRvItemClickListener: OnRvItemClickListener? = null
 
     fun setHeaderView(headerView: View) {
         mHeaderView = headerView
@@ -64,8 +64,8 @@ class HomeArticlePagingAdapter() :
         holder.itemView.tv_time.text = bean?.niceShareDate
 
         if (holder is ViewHolder) {
-            if (mListener == null) return
-            holder.itemView.setOnClickListener(View.OnClickListener { mListener?.onItemClick(pos) })
+            if (onRvItemClickListener == null) return
+            holder.itemView.setOnClickListener(View.OnClickListener { onRvItemClickListener?.onItemClick(pos) })
         }
     }
 

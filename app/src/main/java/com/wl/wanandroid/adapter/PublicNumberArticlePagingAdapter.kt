@@ -8,8 +8,10 @@ import androidx.annotation.NonNull
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.tudaritest.util.OnRvItemClickListener
 import com.wl.wanandroid.R
 import com.wl.wanandroid.bean.PublicNumberArticleData
+import com.wl.wanandroid.bean.SearchResultItemData
 import com.wl.wanandroid.utils.StringUtils
 import kotlinx.android.synthetic.main.layout_item_rv_project_article.view.*
 import kotlinx.android.synthetic.main.layout_item_rv_project_article.view.tv_title
@@ -17,7 +19,7 @@ import kotlinx.android.synthetic.main.layout_item_rv_search_result.view.*
 
 class PublicNumberArticlePagingAdapter :
     PagedListAdapter<PublicNumberArticleData, PublicNumberArticlePagingAdapter.ViewHolder>(diffCallback) {
-
+    var onRvItemClickListener: OnRvItemClickListener?=null
     companion object {
 
         private val diffCallback = object : DiffUtil.ItemCallback<PublicNumberArticleData>() {
@@ -29,6 +31,10 @@ class PublicNumberArticlePagingAdapter :
         }
     }
 
+    open fun getArticleItemBean(position:Int): PublicNumberArticleData {
+        return getItem(position) as PublicNumberArticleData
+
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -49,6 +55,10 @@ class PublicNumberArticlePagingAdapter :
 
         holder.itemView.tv_user_name.setText(bean?.chapterName)
         holder.itemView.tv_time.setText(bean?.niceShareDate)
+
+        holder.itemView.setOnClickListener {
+            onRvItemClickListener?.onItemClick(position)
+        }
     }
 
     inner class ViewHolder(@NonNull itemView: View) : RecyclerView.ViewHolder(itemView) {

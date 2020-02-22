@@ -9,9 +9,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.tudaritest.util.OnRvItemClickListener
 import com.wl.wanandroid.R
 import com.wl.wanandroid.adapter.ProjectArticlePagingAdapter
 import com.wl.wanandroid.bean.ProjectArticleData
+import com.wl.wanandroid.utils.ActivityUtils
 import com.wl.wanandroid.utils.AppConstants
 import com.wl.wanandroid.viewmodel.ProjectArticleViewModel
 import kotlinx.android.synthetic.main.layout_system_fragment_child.*
@@ -59,6 +61,18 @@ class ProjectChildFragment:BaseFragment() {
 //                    refreshLayout.finishRefresh()
                 }
             })
+
+        rvProjectArticleAdapter?.onRvItemClickListener = object : OnRvItemClickListener {
+            override fun onItemClick(position: Int) {
+
+                context?.let {
+                ActivityUtils.skipToArticle(it,rvProjectArticleAdapter?.getArticleItemBean(position)?.id?:0,
+                    rvProjectArticleAdapter?.getArticleItemBean(position)?.title?:"",rvProjectArticleAdapter?.getArticleItemBean(position)?.link?:"")
+
+                }
+            }
+
+        }
     }
 
 }

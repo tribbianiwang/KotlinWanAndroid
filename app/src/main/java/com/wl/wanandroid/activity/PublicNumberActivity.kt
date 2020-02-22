@@ -8,14 +8,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.tudaritest.util.OnRvItemClickListener
 import com.wl.wanandroid.R
 import com.wl.wanandroid.adapter.PublicNumberArticlePagingAdapter
 import com.wl.wanandroid.bean.PublicNumberArticleBean
 import com.wl.wanandroid.bean.PublicNumberArticleData
 import com.wl.wanandroid.model.GetPublicNumberArticleModel
-import com.wl.wanandroid.utils.AppConstants
-import com.wl.wanandroid.utils.ImmerBarUtils
-import com.wl.wanandroid.utils.LogUtils
+import com.wl.wanandroid.utils.*
 import com.wl.wanandroid.viewmodel.GetPublicNumberArticleViweModel
 
 import kotlinx.android.synthetic.main.activity_public_number.*
@@ -58,6 +57,15 @@ class PublicNumberActivity : BaseActivity() {
         getPublicNumberArticleViewModel.publicNumberId = publicNumberId.toString()
         getPublicNumberArticleViewModel.getArticleLiveData().observe(this,
             Observer<PagedList<PublicNumberArticleData>> { datasBeans -> publicNumberArticleAdapter.submitList(datasBeans) })
+
+        publicNumberArticleAdapter.onRvItemClickListener = object :OnRvItemClickListener{
+            override fun onItemClick(position: Int) {
+
+                ActivityUtils.skipToArticle(this@PublicNumberActivity,publicNumberArticleAdapter.getArticleItemBean(position).id,
+                   publicNumberArticleAdapter.getArticleItemBean(position).title,publicNumberArticleAdapter.getArticleItemBean(position).link)
+            }
+
+        }
     }
 
     private fun initToolbar() {

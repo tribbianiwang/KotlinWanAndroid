@@ -21,6 +21,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text=""
+            android:maxLines="1"
+            android:maxLength="15"
+            android:ellipsize="end"
             android:textColor="@color/theme_red"
             android:textSize="@dimen/small_middle_text_size" />
     </androidx.appcompat.widget.Toolbar>

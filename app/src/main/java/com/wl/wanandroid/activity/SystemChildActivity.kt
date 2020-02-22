@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.tudaritest.util.OnRvItemClickListener
 import com.wl.wanandroid.R
 import com.wl.wanandroid.adapter.RvSystemChildAdapter
 import com.wl.wanandroid.adapter.SystemChildArticlesPagingAdapter
@@ -14,6 +15,7 @@ import com.wl.wanandroid.bean.SearchResultItemData
 import com.wl.wanandroid.bean.SystemChildArticleBean
 import com.wl.wanandroid.bean.SystemChildArticleItemData
 import com.wl.wanandroid.model.GetSystemChildArticlesModel
+import com.wl.wanandroid.utils.ActivityUtils
 import com.wl.wanandroid.utils.AppConstants
 import com.wl.wanandroid.utils.ImmerBarUtils
 import com.wl.wanandroid.utils.LogUtils
@@ -60,7 +62,14 @@ class SystemChildActivity : BaseActivity() {
         getSystemChildArticlesViewModel.getArticlesLiveData().observe(this,
             Observer<PagedList<SystemChildArticleItemData>> { datasBeans ->
                 rvSystemChildArticlesAdapter?.submitList(datasBeans) })
+        rvSystemChildArticlesAdapter?.onRvItemClickListener = object:OnRvItemClickListener{
+            override fun onItemClick(position: Int) {
 
+                ActivityUtils.skipToArticle(this@SystemChildActivity,rvSystemChildArticlesAdapter?.getArticleItemBean(position)?.id?:0,
+                    rvSystemChildArticlesAdapter?.getArticleItemBean(position)?.title?:"",rvSystemChildArticlesAdapter?.getArticleItemBean(position)?.link?:"")
+            }
+
+        }
     }
 
     private fun initToolbar() {
