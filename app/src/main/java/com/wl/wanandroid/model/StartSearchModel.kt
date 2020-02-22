@@ -41,10 +41,6 @@ class StartSearchModel(dataResultListener: BaseDataResultListener<SearchResultBe
                         dataResultListener.setQueryStatus(AppConstants.QUERYSTATUSEMPTY)
                     }
 
-
-
-
-
                 }
 
 
