@@ -32,11 +32,15 @@ interface  RetrofitService{
     fun getHotSearch():Observable<HotSearchBean>//获取热搜
 
     @POST("article/query/{page}/json")
-    fun startSearch(@Path("page")page: String,@Query("k")key:String):Observable<SearchResultBean>
+    fun startSearch(@Path("page")page: String,@Query("k")key:String):Observable<SearchResultBean>//搜索
 
 
     @GET("wxarticle/list/{id}/{page}/json")
-    fun getPublicNumber(@Path("id")id: String,@Path("page")page:String):Observable<PublicNumberArticleBean>
+    fun getPublicNumber(@Path("id")id: String,@Path("page")page:String):Observable<PublicNumberArticleBean>//公众号文章列表
+
+
+    @GET("article/list/{page}/json")
+    fun getSystemChildArticles(@Path("page")page:String,@Query("cid")cid:String):Observable<SystemChildArticleBean>//获取体系下的文章
 
 
 }
