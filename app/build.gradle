@@ -1,9 +1,39 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.mob.sdk'
 apply plugin: 'kotlin-android'
 def paging_version = "2.1.0"
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+
+MobSDK {
+    appKey "2e1e1f64668aa"
+    appSecret "d84a3cf9fffbfd1e7c6ec80b283ba4f0"
+    ShareSDK {
+        //平台配置信息
+        devInfo {
+            Wechat {
+                appId "wx4868b35061f87885"
+                appSecret "64020361b8ec4c99936c0e3999a9f249"
+            }
+            QQ {
+                appId "100371282"
+                appKey "aed9b0303e3ed1e27bae87c33761161d"
+                shareByAppClient true
+            }
+            Facebook {
+                appKey "1412473428822331"
+                appSecret "a42f4f3f867dc947b9ed6020c2e93558"
+                callbackUri "https://mob.com"
+            }
+            SinaWeibo {
+                appKey "568898243"
+                appSecret "38a4f8204cc784f81f9f0daaf31e02e3"
+                callbackUri "http://www.sharesdk.cn"
+                shareByAppClient true
+            }
+        }
+    }
+}
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -13,6 +43,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -74,6 +105,6 @@ dependencies {
     kapt 'androidx.room:room-compiler:2.2.3'
 
     androidTestImplementation 'androidx.room:room-testing:2.2.3'
-
+    implementation 'com.android.support:multidex:1.0.2'
 
 }

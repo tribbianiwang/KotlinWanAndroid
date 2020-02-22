@@ -10,6 +10,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Bundle
 import android.view.View
+import android.webkit.WebChromeClient
 import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -214,7 +215,7 @@ open class BaseActivity: AppCompatActivity() {
          *
          * @param context
          */
-        fun showProgress(context: Context?) {
+        fun showProgress(context: Context) {
             if (context != null && !(context as Activity).isFinishing) {
                 if (dialog == null) {
                     dialog = AlertDialog(context, R.style.FinalsDialog)

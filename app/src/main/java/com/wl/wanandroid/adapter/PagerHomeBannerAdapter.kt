@@ -1,11 +1,15 @@
 package com.wl.wanandroid.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import com.wl.wanandroid.R
+import com.wl.wanandroid.activity.ArticleDetailActivity
 import com.wl.wanandroid.bean.BannerBeanData
+import com.wl.wanandroid.utils.ActivityUtils
+import com.wl.wanandroid.utils.AppConstants
 import com.wl.wanandroid.utils.ImageViewUtils
 import kotlinx.android.synthetic.main.item_layout_home_banner.view.*
 
@@ -38,16 +42,16 @@ class PagerHomeBannerAdapter(mInformationList: List<BannerBeanData>) : PagerAdap
 
             mInfoList?.get(position)?.let { it1 -> dosomething(container.context, it1) }
         }
+
+
+
+
         return contentView
     }
-    private fun dosomething(context: Context, item: Any) {
-        // ListView 监听动作
-        val al = item as BannerBeanData
-//        if ("Y" == al.IsWeb) {
-//            context.startActivity(getListIntent(context,al, ActivityDisplayForWeb::class.java))
-//        } else {
-//            context.startActivity(getListIntent(context,al, ActivitiesDisplay::class.java))
-//        }
+    private fun dosomething(context: Context, item: BannerBeanData) {
+
+        ActivityUtils.skipToArticle(context,item.id,item.title,item.url)
+
 
     }
 

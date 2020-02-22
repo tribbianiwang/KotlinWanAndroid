@@ -7,6 +7,11 @@ object AppConstants {
     val SYSTEM_NAME:String = "SYSTEM_NAME"
     val SYSTEM_ID:String = "SYSTEM_ID"
 
+    val ARTICLE_ID:String = "ARTICLE_ID"
+    val ARTICLE_URL:String ="ARTICLE_URL"
+    val ARTICLE_TITLE:String ="ARTICLE_TITLE"
+
+
     val BASEROOTURL = "https://www.wanandroid.com/"
 
     const val BANNER_URL = "banner/json"//首页轮播图

@@ -28,7 +28,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MyAppTheme">
-        <activity android:name=".activity.SystemChildActivity"></activity>
+        <activity android:name=".activity.ArticleDetailActivity"></activity>
+        <activity android:name=".activity.SystemChildActivity" />
         <activity android:name=".activity.PublicNumberActivity" />
         <activity android:name=".activity.SearchActivity" />
         <activity android:name=".MainActivity">
