@@ -19,4 +19,5 @@
     <string name="string_search">搜索</string>
     <string name="string_hot_search">搜索热词</string>
     <string name="string_search_history">历史记录</string>
+    <string name="string_shared_url_hint">连接已复制到剪贴板，可以粘贴分享啦</string>
 </resources>

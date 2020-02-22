@@ -12,15 +12,8 @@ import android.webkit.WebView
 import android.webkit.WebChromeClient
 import android.webkit.WebViewClient
 import cn.sharesdk.onekeyshare.OnekeyShare
-
-
-
-
-
-
-
-
-
+import com.wl.wanandroid.utils.StringUtils
+import com.wl.wanandroid.utils.StringUtils.setClipboard
 
 
 class ArticleDetailActivity : BaseActivity() {
@@ -57,7 +50,9 @@ class ArticleDetailActivity : BaseActivity() {
             if(it.itemId==R.id.bt_menu_collect){
                 T.showShort(this,"收藏")
             }else if(it.itemId== com.wl.wanandroid.R.id.bt_menu_share){
-                showShare()
+                setClipboard(ArticleDetailActivity@this,articleUrl)
+                T.showShort(ArticleDetailActivity@this,StringUtils.getString(R.string.string_shared_url_hint))
+//                showShare()
             }
 
              false
