@@ -1,5 +1,6 @@
 package com.wl.wanandroid.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,10 +11,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tudaritest.util.OnRvItemClickListener
 import com.wl.wanandroid.R
+import com.wl.wanandroid.activity.PublicNumberActivity
+import com.wl.wanandroid.activity.SystemChildActivity
 import com.wl.wanandroid.adapter.RvSystemChildAdapter
 import com.wl.wanandroid.adapter.RvSystemTreeAdapter
 import com.wl.wanandroid.bean.SystemChildData
 import com.wl.wanandroid.bean.SystemTreeBean
+import com.wl.wanandroid.utils.AppConstants
 import com.wl.wanandroid.utils.LogUtils
 import com.wl.wanandroid.viewmodel.SystemTreeViewModel
 import kotlinx.android.synthetic.main.layout_fragment_system.*
@@ -56,6 +60,19 @@ class SystemFragment : BaseFragment() {
                 systemChildenData.addAll(it.data.get(0).children as ArrayList<SystemChildData>)
                 rvSystemChildrenAdapter = RvSystemChildAdapter(systemChildenData)
                 rv_system_children.adapter = rvSystemChildrenAdapter
+
+                rvSystemChildrenAdapter?.onRvItemClickListener = object :OnRvItemClickListener{
+                    override fun onItemClick(position: Int) {
+                        var intent = Intent(context, SystemChildActivity::class.java)
+
+                        intent.putExtra(AppConstants.SYSTEM_NAME,systemChildenData.get(position).name)
+                        intent.putExtra(AppConstants.SYSTEM_ID,systemChildenData.get(position).id)
+                        startActivity(intent)
+
+                    }
+
+                }
+
             }
 
             rvSystemTreeAdapter?.rvItemClickListener = object:OnRvItemClickListener{

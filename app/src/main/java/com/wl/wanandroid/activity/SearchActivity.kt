@@ -124,7 +124,7 @@ class SearchActivity : BaseActivity() {
         getHotSearchViewModel.errorMsgLiveData.observe(this,errorMsgObserver)
 
         startSearchViewModel.baseResultLiveData.observe(this,searchResultBeanObserver)
-        startSearchViewModel.queryStatusLiveData.observe(this,gLoadingqueryStatusObserver)
+//        startSearchViewModel.queryStatusLiveData.observe(this,gLoadingqueryStatusObserver)
         startSearchViewModel.errorMsgLiveData.observe(this,errorMsgObserver)
 
         getHotSearchViewModel.getHotSearch()

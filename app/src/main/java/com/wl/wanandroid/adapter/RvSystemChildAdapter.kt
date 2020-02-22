@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.tudaritest.util.OnRvItemClickListener
 import com.wl.wanandroid.R
 import com.wl.wanandroid.bean.SystemChildData
 import kotlinx.android.synthetic.main.layout_item_rv_system_children.view.*
@@ -14,6 +15,9 @@ class RvSystemChildAdapter(systemChildenData: ArrayList<SystemChildData>) :Recyc
     init {
         this.systemChildenData = systemChildenData
     }
+    
+    var onRvItemClickListener:OnRvItemClickListener?=null
+    
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         var contentView = LayoutInflater.from(parent.context).inflate(R.layout.layout_item_rv_system_children,parent,false)
@@ -28,6 +32,9 @@ class RvSystemChildAdapter(systemChildenData: ArrayList<SystemChildData>) :Recyc
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.tv_system_child_name.text = systemChildenData.get(position).name
+        holder.itemView.setOnClickListener {
+            onRvItemClickListener?.onItemClick(position)
+        }
 
     }
 

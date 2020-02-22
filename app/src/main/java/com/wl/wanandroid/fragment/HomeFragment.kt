@@ -105,7 +105,6 @@ class HomeFragment : BaseFragment() {
             rvHomePublicNumberAdapter.onRvItemClickListener = object :OnRvItemClickListener{
                 override fun onItemClick(position: Int) {
                     var intent = Intent(context,PublicNumberActivity::class.java)
-                    LogUtils.d("homfragmenttrans","name:${it.data.get(position).name},id:${it.data.get(position).id}")
                     intent.putExtra(AppConstants.PUBLIC_NUMBER_NAME,it.data.get(position).name)
                     intent.putExtra(AppConstants.PUBLIC_NUMBER_ID,it.data.get(position).id)
                     startActivity(intent)
