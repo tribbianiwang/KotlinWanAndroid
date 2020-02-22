@@ -5,14 +5,14 @@
     <item
         android:id="@+id/bt_menu_collect"
         app:showAsAction="always"
-        android:icon="@drawable/icon_collect_gray"
+        android:icon="@drawable/icon_collect_gray_big"
         android:orderInCategory="100"
         android:title="收藏" />
 
     <item
         android:id="@+id/bt_menu_share"
         app:showAsAction="always"
-        android:icon="@drawable/icon_share_gray"
+        android:icon="@drawable/icon_share_gray_big"
         android:orderInCategory="100"
         android:title="分享" />
 
