@@ -22,6 +22,8 @@ object AppConstants {
     const val HOT_SEARCH_URL = "hotkey/json"//热搜
 
 
+    const val SIGN_USER_NAME = "SIGN_USER_NAME"
+
 
 
 
@@ -45,4 +47,9 @@ object AppConstants {
     val TOAST_DOUBLE_TIME_LIMIT = 300
     const val HOME_BANNER_LOOP_TIME = 4000
     val HIDE_LOADING_STATUS_MSG = "hide_loading_status_msg"
+
+    const val SAVED_USERNAME = "SAVED_USERNAME"
+    const val SAVED_USER_ID = "SAVED_USER_ID"
+
+
 }

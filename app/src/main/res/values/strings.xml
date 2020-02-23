@@ -26,4 +26,9 @@
     <string name="string_sign">注册</string>
     <string name="string_username_empty">用户名不能为空</string>
     <string name="string_password_empty">密码为空</string>
+    <string name="string_sign_repeat_password_hint">再次输入密码</string>
+    <string name="et_password_repeat">请再次输入密码</string>
+    <string name="string_password_not_equal">两次密码输入不一致</string>
+    <string name="string_sign_success">注册成功</string>
+    <string name="string_tour">游客</string>
 </resources>

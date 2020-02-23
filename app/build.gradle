@@ -109,4 +109,6 @@ dependencies {
     androidTestImplementation 'androidx.room:room-testing:2.2.3'
     implementation 'com.android.support:multidex:1.0.2'
 
+    implementation 'com.tencent:mmkv-static:1.0.24'
+
 }

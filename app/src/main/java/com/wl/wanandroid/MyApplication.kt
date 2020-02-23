@@ -4,6 +4,11 @@ import android.app.Application
 import androidx.multidex.MultiDexApplication
 import com.wl.wanandroid.retrofit.GetRetrofitService
 import com.wl.wanandroid.utils.LogUtils
+import com.tencent.mmkv.MMKV
+import androidx.core.content.ContextCompat.getSystemService
+import com.wl.wanandroid.utils.T
+
+
 
 class MyApplication: MultiDexApplication(){
     override fun onCreate() {
@@ -11,6 +16,7 @@ class MyApplication: MultiDexApplication(){
         instance = this
         GetRetrofitService.init()
 
+        val rootDir = MMKV.initialize(this)
         LogUtils.d("myapplications","oncreate")
     }
 

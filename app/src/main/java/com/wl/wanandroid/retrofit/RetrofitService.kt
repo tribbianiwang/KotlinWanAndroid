@@ -45,5 +45,8 @@ interface  RetrofitService{
     @POST("user/login")
     fun startLogin(@Query("username")username:String,@Query("password")password:String):Observable<LoginBean>//登录
 
+    @POST("user/register")
+    fun startSign(@Query("username")username: String,@Query("password")password:String,@Query("repassword")repassword:String):Observable<SignBean>
+
 
 }
