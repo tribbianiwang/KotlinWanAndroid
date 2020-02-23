@@ -51,7 +51,7 @@
 
 
     <RelativeLayout
-        android:id="@+id/rv_collect"
+        android:id="@+id/rl_collect"
         android:foreground="?selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

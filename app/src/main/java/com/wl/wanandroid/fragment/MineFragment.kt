@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatViewInflater
 import androidx.fragment.app.Fragment
 import com.tencent.mmkv.MMKV
 import com.wl.wanandroid.R
+import com.wl.wanandroid.activity.CollectArticleActivity
 import com.wl.wanandroid.activity.LoginActivity
 import com.wl.wanandroid.utils.AppConstants
 import com.wl.wanandroid.utils.ImmerBarUtils
@@ -42,6 +43,10 @@ class MineFragment : BaseFragment() {
             MMKV.defaultMMKV().encode(AppConstants.SAVED_USER_ID,"")
             context?.sendBroadcast(Intent(AppConstants.USERLOGOUTBROADCAST))
 
+        }
+
+        rl_collect.setOnClickListener {
+            startActivity(Intent(context,CollectArticleActivity::class.java))
         }
 
     }
