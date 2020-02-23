@@ -62,11 +62,10 @@ class HomeArticlePagingAdapter() :
         holder.itemView.tv_super_chapter_name.text = bean?.superChapterName
         holder.itemView.tv_user_name.text = bean?.shareUser
         holder.itemView.tv_time.text = bean?.niceShareDate
-
-        if (holder is ViewHolder) {
-            if (onRvItemClickListener == null) return
-            holder.itemView.setOnClickListener(View.OnClickListener { onRvItemClickListener?.onItemClick(pos) })
+        holder.itemView.setOnClickListener {
+            onRvItemClickListener?.onItemClick(position)
         }
+
     }
 
     override fun getItemCount(): Int {
