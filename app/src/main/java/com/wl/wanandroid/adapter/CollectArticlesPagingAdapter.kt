@@ -7,16 +7,24 @@ import androidx.annotation.NonNull
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.tudaritest.util.OnRvDeleteItemClickListener
 import com.tudaritest.util.OnRvItemClickListener
 import com.wl.wanandroid.R
 import com.wl.wanandroid.bean.CollectArticleItemData
 import com.wl.wanandroid.utils.StringUtils
+import kotlinx.android.synthetic.main.layout_item_rv_collect_result.view.*
 import kotlinx.android.synthetic.main.layout_item_rv_project_article.view.tv_title
 import kotlinx.android.synthetic.main.layout_item_rv_search_result.view.*
+import kotlinx.android.synthetic.main.layout_item_rv_search_result.view.tv_super_chapter_name
+import kotlinx.android.synthetic.main.layout_item_rv_search_result.view.tv_time
+import kotlinx.android.synthetic.main.layout_item_rv_search_result.view.tv_user_name
 
 class CollectArticlesPagingAdapter :
     PagedListAdapter<CollectArticleItemData, CollectArticlesPagingAdapter.ViewHolder>(diffCallback) {
     var onRvItemClickListener: OnRvItemClickListener?=null
+
+    var onRvDeleteListener:OnRvDeleteItemClickListener?=null
+
     companion object {
 
         private val diffCallback = object : DiffUtil.ItemCallback<CollectArticleItemData>() {
@@ -34,7 +42,7 @@ class CollectArticlesPagingAdapter :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_item_rv_search_result, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.layout_item_rv_collect_result, parent, false)
         return ViewHolder(view)
     }
 
@@ -50,6 +58,9 @@ class CollectArticlesPagingAdapter :
 
         holder.itemView.setOnClickListener {
             onRvItemClickListener?.onItemClick(position)
+        }
+        holder.itemView.bt_delete.setOnClickListener{
+            onRvDeleteListener?.onItemDelete(position)
         }
     }
 

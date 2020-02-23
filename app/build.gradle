@@ -111,4 +111,5 @@ dependencies {
 
     implementation 'com.tencent:mmkv-static:1.0.24'
     implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+    implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
 }

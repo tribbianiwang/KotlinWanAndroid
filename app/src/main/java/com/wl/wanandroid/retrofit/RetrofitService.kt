@@ -54,6 +54,9 @@ interface  RetrofitService{
     @GET("lg/collect/list/{page}/json")
     fun getCollectArticles(@Path("page")page:String):Observable<CollectArticleBean>//获取收藏的文章列表
 
+    @POST("lg/uncollect_originId/{collectId}/json")
+    fun deleteCollectArticle(@Path("collectId")collectId:String):Observable<DeleteCollectBean>//取消收藏
+
 
 
 }
