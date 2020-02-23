@@ -49,6 +49,11 @@ interface  RetrofitService{
     fun startSign(@Query("username")username: String,@Query("password")password:String,@Query("repassword")repassword:String):Observable<SignBean>
 
     @POST("lg/collect/{articleId}/json")
-    fun startCollectArticle(@Path("articleId")articleId:String):Observable<CollectArticleResultBean>
+    fun startCollectArticle(@Path("articleId")articleId:String):Observable<CollectArticleResultBean>//开始收藏
+
+    @GET("lg/collect/list/{page}/json")
+    fun getCollectArticles(@Path("page")page:String):Observable<CollectArticleBean>//获取收藏的文章列表
+
+
 
 }
