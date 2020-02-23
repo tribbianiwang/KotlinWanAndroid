@@ -20,4 +20,10 @@
     <string name="string_hot_search">搜索热词</string>
     <string name="string_search_history">历史记录</string>
     <string name="string_shared_url_hint">连接已复制到剪贴板，可以粘贴分享啦</string>
+    <string name="string_login">登录</string>
+    <string name="string_login_name_hint">用户名</string>
+    <string name="string_login_password_hint">密码</string>
+    <string name="string_sign">注册</string>
+    <string name="string_username_empty">用户名不能为空</string>
+    <string name="string_password_empty">密码为空</string>
 </resources>

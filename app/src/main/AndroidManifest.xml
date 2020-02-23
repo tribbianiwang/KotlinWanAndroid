@@ -28,28 +28,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MyAppTheme">
-        <activity android:name=".activity.ArticleDetailActivity"
+        <activity android:name=".activity.LoginActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             ></activity>
-        <activity android:name=".activity.SystemChildActivity"
+        <activity
+            android:name=".activity.ArticleDetailActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            >
-
-        </activity>
-        <activity android:name=".activity.PublicNumberActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SystemChildActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name=".activity.SearchActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.PublicNumberActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SearchActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"
-            >
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
