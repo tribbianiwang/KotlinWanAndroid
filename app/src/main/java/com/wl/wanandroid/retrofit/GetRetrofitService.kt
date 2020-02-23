@@ -1,6 +1,7 @@
 package com.wl.wanandroid.retrofit
 
-import com.google.gson.Gson
+
+import android.content.Context
 import com.wl.wanandroid.utils.AppConstants
 import com.wl.wanandroid.utils.LogUtils
 import okhttp3.OkHttpClient
@@ -9,6 +10,12 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache
+import com.franmontiel.persistentcookiejar.PersistentCookieJar
+import com.franmontiel.persistentcookiejar.ClearableCookieJar
+
+
 
 
 class GetRetrofitService {
@@ -30,7 +37,7 @@ class GetRetrofitService {
 
 
 
-     fun init() {
+     fun init(applicationContext: Context) {
          val loggingInterceptor = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
              override fun log(message: String) {
                  //打印retrofit日志
@@ -39,8 +46,12 @@ class GetRetrofitService {
          })
 
          loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+         val cookieJar = PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(applicationContext))
+
+
         client = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
+            .cookieJar(cookieJar)
                 .connectTimeout(AppConstants.TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(AppConstants.TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(AppConstants.TIMEOUT, TimeUnit.SECONDS)

@@ -2,26 +2,32 @@ package com.wl.wanandroid.activity
 
 import android.graphics.Color
 import android.os.Bundle
+import android.webkit.WebChromeClient
+import android.webkit.WebView
+import android.webkit.WebViewClient
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import cn.sharesdk.onekeyshare.OnekeyShare
 import com.wl.wanandroid.R
+import com.wl.wanandroid.bean.CollectArticleResultBean
 import com.wl.wanandroid.utils.AppConstants.ARTICLE_ID
 import com.wl.wanandroid.utils.AppConstants.ARTICLE_TITLE
 import com.wl.wanandroid.utils.AppConstants.ARTICLE_URL
-import com.wl.wanandroid.utils.T
-import kotlinx.android.synthetic.main.activity_article_detail.*
-import android.webkit.WebView
-import android.webkit.WebChromeClient
-import android.webkit.WebViewClient
-import cn.sharesdk.onekeyshare.OnekeyShare
-import com.gyf.immersionbar.components.ImmersionProxy
 import com.wl.wanandroid.utils.ImmerBarUtils
+import com.wl.wanandroid.utils.LogUtils
 import com.wl.wanandroid.utils.StringUtils
 import com.wl.wanandroid.utils.StringUtils.setClipboard
+import com.wl.wanandroid.utils.T
+import com.wl.wanandroid.viewmodel.StartCollectArticleViewModel
+import kotlinx.android.synthetic.main.activity_article_detail.*
 
 
 class ArticleDetailActivity : BaseActivity() {
     var articleTitle:String=""
     var articleId:Int = 0
     var articleUrl:String = ""
+    lateinit var startCollectArticleViewModel: StartCollectArticleViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +40,18 @@ class ArticleDetailActivity : BaseActivity() {
         tv_title.text = articleTitle
 
         initToolBar()
+
+        startCollectArticleViewModel = ViewModelProviders.of(this).get(StartCollectArticleViewModel::class.java)
+
+        lifecycle.addObserver(startCollectArticleViewModel)
+
+        var collectArticleObserver = Observer<CollectArticleResultBean>{
+            T.showShort(ArticleDetailActivity@this,"收藏成功")
+        }
+
+        startCollectArticleViewModel.baseResultLiveData.observe(this,collectArticleObserver)
+        startCollectArticleViewModel.queryStatusLiveData.observe(this,queryStatusObserver)
+        startCollectArticleViewModel.errorMsgLiveData.observe(this, errorMsgObserver)
     }
 
     /**
@@ -52,7 +70,9 @@ class ArticleDetailActivity : BaseActivity() {
         }
         index_toolbar.setOnMenuItemClickListener {
             if(it.itemId==R.id.bt_menu_collect){
-                T.showShort(this,"收藏")
+                LogUtils.d("articleDetailActivity","收藏${articleId}")
+//                T.showShort(this,"收藏"+articleId)
+                startCollectArticleViewModel.startCollectArticle(articleId.toString())
             }else if(it.itemId== com.wl.wanandroid.R.id.bt_menu_share){
                 setClipboard(ArticleDetailActivity@this,articleUrl)
                 T.showShort(ArticleDetailActivity@this,StringUtils.getString(R.string.string_shared_url_hint))
@@ -88,16 +108,19 @@ class ArticleDetailActivity : BaseActivity() {
         wv_article.getSettings().setJavaScriptEnabled(true)
         wv_article.getSettings().setSupportZoom(true)
         wv_article.getSettings().setBuiltInZoomControls(true)
+
+        wv_article.setWebViewClient(object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+                wv_article.loadUrl(url)
+                return true
+            }
+        })
+
+
         wv_article.loadUrl(articleUrl)
 
 
 
-        wv_article.setWebViewClient(object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-                view.loadUrl(url)
-                return super.shouldOverrideUrlLoading(view, url)
-            }
-        })
 
 
         wv_article.setWebChromeClient(object : WebChromeClient() {

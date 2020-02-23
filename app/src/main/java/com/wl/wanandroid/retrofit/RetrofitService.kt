@@ -48,5 +48,7 @@ interface  RetrofitService{
     @POST("user/register")
     fun startSign(@Query("username")username: String,@Query("password")password:String,@Query("repassword")repassword:String):Observable<SignBean>
 
+    @POST("lg/collect/{articleId}/json")
+    fun startCollectArticle(@Path("articleId")articleId:String):Observable<CollectArticleResultBean>
 
 }
