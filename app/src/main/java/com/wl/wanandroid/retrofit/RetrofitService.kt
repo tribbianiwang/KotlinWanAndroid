@@ -42,5 +42,8 @@ interface  RetrofitService{
     @GET("article/list/{page}/json")
     fun getSystemChildArticles(@Path("page")page:String,@Query("cid")cid:String):Observable<SystemChildArticleBean>//获取体系下的文章
 
+    @POST("user/login")
+    fun startLogin(@Query("username")username:String,@Query("password")password:String):Observable<LoginBean>//登录
+
 
 }
