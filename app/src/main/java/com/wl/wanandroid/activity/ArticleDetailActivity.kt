@@ -47,6 +47,8 @@ class ArticleDetailActivity : BaseActivity() {
 
         var collectArticleObserver = Observer<CollectArticleResultBean>{
             T.showShort(ArticleDetailActivity@this,"收藏成功")
+            index_toolbar.menu.getItem(0).setIcon(R.drawable.icon_collect_red_large)
+
         }
 
         startCollectArticleViewModel.baseResultLiveData.observe(this,collectArticleObserver)
