@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatViewInflater
 import androidx.fragment.app.Fragment
 import com.tencent.mmkv.MMKV
 import com.wl.wanandroid.R
+import com.wl.wanandroid.activity.AboutActivity
 import com.wl.wanandroid.activity.CollectArticleActivity
 import com.wl.wanandroid.activity.LoginActivity
 import com.wl.wanandroid.utils.AppConstants
@@ -38,7 +39,7 @@ class MineFragment : BaseFragment() {
             startActivity(Intent(activity,LoginActivity::class.java))
         }
 
-        rv_setting.setOnClickListener {
+        rv_quit_login.setOnClickListener {
             MMKV.defaultMMKV().encode(AppConstants.SAVED_USERNAME,"")
             MMKV.defaultMMKV().encode(AppConstants.SAVED_USER_ID,"")
             context?.sendBroadcast(Intent(AppConstants.USERLOGOUTBROADCAST))
@@ -47,6 +48,10 @@ class MineFragment : BaseFragment() {
 
         rl_collect.setOnClickListener {
             startActivity(Intent(context,CollectArticleActivity::class.java))
+        }
+
+        rv_about.setOnClickListener {
+            startActivity(Intent(context,AboutActivity::class.java))
         }
 
     }

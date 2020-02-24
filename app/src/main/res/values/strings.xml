@@ -32,4 +32,5 @@
     <string name="string_sign_success">注册成功</string>
     <string name="string_tour">游客</string>
     <string name="string_delete">删除</string>
+    <string name="string_logout">退出登录</string>
 </resources>

@@ -98,55 +98,7 @@
             />
 
     </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/rv_setting"
-        android:layout_marginTop="@dimen/app_margin_right"
-        android:foreground="?selectableItemBackground"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_cornor_gray_white_rectangular"
-        android:paddingTop="@dimen/app_margin_top"
-        android:paddingBottom="@dimen/app_margin_top"
-        android:paddingLeft="@dimen/app_margin_left"
-        android:paddingRight="@dimen/app_margin_left"
-        >
-        <LinearLayout
 
-            android:layout_alignParentLeft="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            >
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:src="@drawable/icon_setting"
-                android:scaleType="fitXY"
-                />
-
-            <TextView
-                android:layout_marginLeft="@dimen/app_margin_left"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/small_text_size"
-                android:textColor="@color/design_text_black"
-                android:text="@string/string_setting"
-
-                />
-
-
-        </LinearLayout>
-
-        <ImageView
-            android:layout_alignParentRight="true"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/icon_arrow_right_gray"
-            android:scaleType="fitXY"
-            />
-
-    </RelativeLayout>
     <RelativeLayout
         android:id="@+id/rv_about"
         android:layout_marginTop="@dimen/app_margin_right"
@@ -196,7 +148,55 @@
             />
 
     </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rv_quit_login"
+        android:layout_marginTop="@dimen/app_margin_right"
+        android:foreground="?selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_cornor_gray_white_rectangular"
+        android:paddingTop="@dimen/app_margin_top"
+        android:paddingBottom="@dimen/app_margin_top"
+        android:paddingLeft="@dimen/app_margin_left"
+        android:paddingRight="@dimen/app_margin_left"
+        >
+        <LinearLayout
 
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/icon_setting"
+                android:scaleType="fitXY"
+                />
+
+            <TextView
+                android:layout_marginLeft="@dimen/app_margin_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/design_text_black"
+                android:text="@string/string_logout"
+
+                />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/icon_arrow_right_gray"
+            android:scaleType="fitXY"
+            />
+
+    </RelativeLayout>
 
 
 </LinearLayout>
