@@ -63,7 +63,7 @@ class HomeArticlePagingAdapter() :
         holder.itemView.tv_user_name.text = bean?.shareUser
         holder.itemView.tv_time.text = bean?.niceShareDate
         holder.itemView.setOnClickListener {
-            onRvItemClickListener?.onItemClick(position)
+            onRvItemClickListener?.onItemClick(pos)
         }
 
     }
