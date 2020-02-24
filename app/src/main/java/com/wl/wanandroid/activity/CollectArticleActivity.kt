@@ -45,24 +45,20 @@ class CollectArticleActivity : BaseActivity() {
 
 
         var deleteCollectObserver = Observer<DeleteCollectBean>{
-            T.showShort(CollectArticleActivity@this,"删除成功"+deletePosition+collectArticleAdapter.toString())
 
-
-            if(deletePosition!=-1){
-                collectArticleAdapter?.currentList?.removeAt(deletePosition);
-                collectArticleAdapter?.notifyItemChanged(deletePosition);
-            }
+            getCollectArticleData()
+//            if(deletePosition!=-1){
+//                collectArticleAdapter?.currentList?.removeAt(deletePosition);
+//                collectArticleAdapter?.notifyItemChanged(deletePosition);
+//            }
 
         }
 
 
         collectArticleViewModel.errorMsgLiveData.observe(this, errorMsgObserver)
-        collectArticleViewModel.getArticlesLiveData().observe(this,
-            Observer<PagedList<CollectArticleItemData>> { datasBeans ->
 
-                collectArticleAdapter?.submitList(datasBeans)
-            })
 
+        getCollectArticleData()
 
 
         deleteArticleViewModel.queryStatusLiveData.observe(this,queryStatusObserver)
@@ -91,6 +87,17 @@ class CollectArticleActivity : BaseActivity() {
             }
 
         }
+
+    }
+
+    private fun getCollectArticleData() {
+        collectArticleViewModel.getDataSource()?.invalidate()
+        collectArticleViewModel.getArticlesLiveData().observe(this,
+            Observer<PagedList<CollectArticleItemData>> { datasBeans ->
+
+                collectArticleAdapter?.submitList(datasBeans)
+            })
+
 
     }
 
