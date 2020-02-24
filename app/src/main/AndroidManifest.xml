@@ -28,9 +28,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MyAppTheme">
-        <activity android:name=".activity.AboutActivity"></activity>
-        <activity android:name=".activity.CollectArticleActivity" />
-        <activity android:name=".activity.SignActivity" />
+        <activity android:name=".activity.SplashActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.AboutActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.CollectArticleActivity"
+
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SignActivity"
+
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.LoginActivity"
             android:launchMode="singleTop"
@@ -50,16 +69,15 @@
         <activity
             android:name=".activity.SearchActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+
+
+        </activity>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
