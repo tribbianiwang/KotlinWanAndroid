@@ -33,4 +33,5 @@
     <string name="string_tour">游客</string>
     <string name="string_delete">删除</string>
     <string name="string_logout">退出登录</string>
+    <string name="string_logout_success">退出登录成功</string>
 </resources>

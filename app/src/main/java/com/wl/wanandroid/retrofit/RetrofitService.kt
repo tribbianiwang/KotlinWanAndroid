@@ -57,6 +57,8 @@ interface  RetrofitService{
     @POST("lg/uncollect_originId/{collectId}/json")
     fun deleteCollectArticle(@Path("collectId")collectId:String):Observable<DeleteCollectBean>//取消收藏
 
+    @GET("user/logout/json")
+    fun logOut():Observable<LogoutBean>//退出登录接口
 
 
 }
