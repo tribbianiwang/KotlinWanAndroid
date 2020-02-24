@@ -10,6 +10,7 @@ import android.view.WindowManager
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import com.wl.wanandroid.MainActivity
+import com.wl.wanandroid.utils.ImmerBarUtils
 import kotlinx.android.synthetic.main.activity_splash.*
 
 
@@ -19,19 +20,9 @@ class SplashActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
 
-        //隐藏标题栏
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
-        //隐藏状态栏
-        //定义全屏参数
-        val flag = WindowManager.LayoutParams.FLAG_FULLSCREEN
-        //获得当前窗体对象
-        val window = this@SplashActivity.window
-        //设置当前窗体为全屏显示
-        window.setFlags(flag, flag)
-
 
         setContentView(R.layout.activity_splash)
-
+        ImmerBarUtils.initImmerBar(this,R.color.theme_red)
         startAnim()
 
     }
