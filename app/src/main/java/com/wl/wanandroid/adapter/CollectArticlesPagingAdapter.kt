@@ -56,7 +56,7 @@ class CollectArticlesPagingAdapter :
         holder.itemView.tv_user_name.setText(bean?.chapterName)
         holder.itemView.tv_time.setText(bean?.niceDate)
 
-        holder.itemView.setOnClickListener {
+        holder.itemView.view_root.setOnClickListener {
             onRvItemClickListener?.onItemClick(position)
         }
         holder.itemView.bt_delete.setOnClickListener{
