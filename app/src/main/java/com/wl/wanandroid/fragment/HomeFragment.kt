@@ -150,7 +150,7 @@ class HomeFragment : BaseFragment() {
         publicNumberListModel.queryStatusLiveData.observe(this,queryStatusObserver)
         publicNumberListModel.errorMsgLiveData.observe(this,errorMsgObserver)
         homeArticleViewModel.baseResultLiveData.observe(this,homeArticlesObserver)
-        homeArticleViewModel.queryStatusLiveData.observe(this,queryStatusObserver)
+//        homeArticleViewModel.queryStatusLiveData.observe(this,queryStatusObserver)
         homeArticleViewModel.errorMsgLiveData.observe(this,errorMsgObserver)
 
 

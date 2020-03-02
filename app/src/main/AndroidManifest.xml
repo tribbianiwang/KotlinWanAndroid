@@ -28,13 +28,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/MyAppTheme">
-        <activity android:name=".activity.SplashActivity">
-
+        <activity android:name=".activity.GlobalScopeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".activity.SplashActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            >
+
         </activity>
         <activity
             android:name=".activity.AboutActivity"
@@ -42,12 +47,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.CollectArticleActivity"
-
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.SignActivity"
-
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity
@@ -69,16 +72,11 @@
         <activity
             android:name=".activity.SearchActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait">
-
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
