@@ -114,7 +114,7 @@ class MineFragment : BaseFragment() {
             rv_quit_login.visibility = View.VISIBLE
             rl_collect.visibility = View.VISIBLE
         }else{
-            tv_user_name.setText(StringUtils.getString(R.string.string_tour)+ Random.nextInt(1,999))
+            tv_user_name.setText(StringUtils.getString(R.string.string_tour))
             tv_please_login.visibility = View.VISIBLE
             rv_quit_login.visibility = View.GONE
             rl_collect.visibility = View.GONE
