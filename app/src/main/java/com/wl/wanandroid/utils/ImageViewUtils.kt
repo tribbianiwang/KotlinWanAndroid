@@ -23,6 +23,18 @@ object ImageViewUtils {
 
     }
 
+
+    fun showImageNoCaches(context: Context, imageView: ImageView, imageUrl: String?, placeHolder: Int, error: Int) {
+        LogUtils.d(TAG, "showImage: $imageUrl")
+        val requestOptions = RequestOptions()
+        requestOptions.placeholder(placeHolder)
+        requestOptions.error(error)
+        requestOptions.diskCacheStrategy(DiskCacheStrategy.NONE)
+
+        Glide.with(context).load(imageUrl).apply(requestOptions).into(imageView)
+
+    }
+
     fun showLocalImage(context: Context, imageView: ImageView,imgId:Int) {
 
         val requestOptions = RequestOptions()
