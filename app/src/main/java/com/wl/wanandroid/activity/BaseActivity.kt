@@ -19,6 +19,7 @@ import com.wl.wanandroid.R
 import com.wl.wanandroid.adapter.GlobalAdapter
 import com.wl.wanandroid.dialog.AlertDialog
 import com.wl.wanandroid.fragment.BaseFragment
+import com.wl.wanandroid.utils.ActivityUtils
 import com.wl.wanandroid.utils.AppConstants
 import com.wl.wanandroid.utils.LogUtils
 import com.wl.wanandroid.utils.T
@@ -174,6 +175,7 @@ open class BaseActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ActivityUtils.addActivity(this)
         Gloading.initDefault(GlobalAdapter())
         val intentFilter = IntentFilter()
         intentFilter.addAction(AppConstants.USERLOGINBROADCAST)
@@ -190,6 +192,7 @@ open class BaseActivity: AppCompatActivity() {
             dialog!!.dismiss()
         }
         dialog = null
+        ActivityUtils.removeActivity(this)
     }
     var contentViewWithoutTitle:View?=null
     fun setGloadView(contentView: View){

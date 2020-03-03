@@ -27,7 +27,7 @@ class SplashActivity : BaseActivity() {
         startAnim()
 
         GlobalScope.launch(Dispatchers.Main) {
-            delay(2000L)
+            delay(1000L)
             var intent = Intent(this@SplashActivity,MainActivity::class.java)
                         startActivity(intent)
                         finish();
