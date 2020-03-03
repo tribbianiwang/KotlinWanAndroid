@@ -29,17 +29,17 @@
         android:supportsRtl="true"
         android:theme="@style/MyAppTheme">
         <activity android:name=".activity.GlobalScopeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activity.SplashActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activity.AboutActivity"

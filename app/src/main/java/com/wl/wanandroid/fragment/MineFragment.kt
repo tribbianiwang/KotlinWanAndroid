@@ -20,6 +20,7 @@ import com.wl.wanandroid.bean.LogoutBean
 import com.wl.wanandroid.model.LogoutModel
 import com.wl.wanandroid.utils.*
 import com.wl.wanandroid.viewmodel.LogOutViewModel
+import kotlinx.android.synthetic.main.activity_collect_article.*
 import kotlinx.android.synthetic.main.layout_fragment_mine.*
 import kotlin.random.Random
 
@@ -111,10 +112,12 @@ class MineFragment : BaseFragment() {
             tv_user_name.setText(MMKV.defaultMMKV().decodeString(AppConstants.SAVED_USERNAME))
             tv_please_login.visibility = View.GONE
             rv_quit_login.visibility = View.VISIBLE
+            rl_collect.visibility = View.VISIBLE
         }else{
             tv_user_name.setText(StringUtils.getString(R.string.string_tour)+ Random.nextInt(1,999))
             tv_please_login.visibility = View.VISIBLE
             rv_quit_login.visibility = View.GONE
+            rl_collect.visibility = View.GONE
         }
     }
 
